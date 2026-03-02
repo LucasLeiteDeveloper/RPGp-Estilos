@@ -2,11 +2,17 @@
     "manifest_version": 3,
     "name": "Meu Customizador CSS",
     "version": "1.0",
+    "web_accessible_resources": [
+        {
+            "resources": ["fonts/mangat.ttf"],
+            "matches": ["<all_urls>"]
+        }
+    ],
     "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "css": ["style.css"],
-        "js": ["content.js"]
-      }
+        {
+            "matches": ["<all_urls>"],
+            "css": ["style.css"],
+            "js": ["content.js"]
+        }
     ]
   }

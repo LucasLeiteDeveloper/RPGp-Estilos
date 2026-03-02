@@ -1,53 +1,31 @@
-let universalSheetPage = null;
-let div = null;
-let container = null;
-
-const observer = new MutationObserver((mutations, obs) => {
-    const element = document.querySelector('.universal-sheet-page');
-    if (element) {
+const masterObserver = new MutationObserver((mutations, obs) => {
+    
+    const sheetPage = document.querySelector('.universal-sheet-page');
+    if (sheetPage && !container) {
         container = document.createElement('div');
-        container.classList.add('floating-side-bar')
-        element.appendChild(container);
-        universalSheetPage = element
+        container.classList.add('floating-side-bar');
+        sheetPage.appendChild(container);
+    }
 
-        obs.disconnect();
+    if (container && !div) {
+        const backButton = document.querySelector('.back-button[data-v-8b81d767]');
+        if (backButton) {
+            container.appendChild(backButton);
+            div = document.createElement('div');
+            div.classList.add('another-btn');
+            container.appendChild(div);
+        }
+    }
+
+    if (div) {
+        const headerBtns = document.querySelector('.header-buttons-container');
+        if (headerBtns) {
+            div.appendChild(headerBtns);
+            obs.disconnect();
+        }
     }
 });
 
-observer.observe(document.body, {
-    childList: true,
-    subtree: true
-});
-
-function createSidebar(container) {
-    div = document.createElement('div');
-    div.classList.add('another-btn');
-    container.appendChild(div)
-}
-
-const observer2 = new MutationObserver((mutations, obs) => {
-    const element = document.querySelector('.back-button[data-v-8b81d767]');
-    if (element) {
-        container.appendChild(element);
-        createSidebar(container);
-        obs.disconnect();
-    }
-});
-
-observer2.observe(document.body, {
-    childList: true,
-    subtree: true
-});
-
-const observer3 = new MutationObserver((mutations, obs) => {
-    const element = document.querySelector('.header-buttons-container');
-    if (element) {
-        div.appendChild(element)
-        obs.disconnect();
-    }
-});
-
-observer3.observe(document.body, {
-    childList: true,
-    subtree: true
-});
+let container = null;
+let div = null;
+masterObserver.observe(document.body, { childList: true, subtree: true });
