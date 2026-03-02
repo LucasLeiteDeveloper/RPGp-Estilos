@@ -1,0 +1,15 @@
+.header-buttons-container {
+    display: none !important;
+}
+
+.sheet-column {
+    height: 100% !important;
+}
+
+.universal-sheet-content {
+    margin-top: 0 !important;
+}
+
+.profile-picture {
+    display: none;
+}
