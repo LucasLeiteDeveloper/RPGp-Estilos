@@ -4,9 +4,9 @@
     src: url('chrome-extension://nkbmheoojfljlmkeiojinieolmhjpfeo/fonts/mangat.ttf') format('truetype');
 }
 
-* {
+/* {
     font-family: 'Teste' !important;
-}
+} */
 
 .sheet-column {
     height: 100% !important;
@@ -17,7 +17,6 @@
 }
 .floating-side-bar {
     position: absolute;
-    width: 90vw;
     top: 18px;
     left: 18px;
     z-index: 10;
