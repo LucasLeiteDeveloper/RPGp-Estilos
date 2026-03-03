@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/fonts/RobotoCondensed-Bold.ttf') format("truetype");
+}
+
+* {
+    font-family: 'Roboto' !important;
+}
+
+.simple-stat-card {
+    corner-shape: bevel !important;
+    background-color: black !important;
+    border: 0 !important;
+}
+
+.sheet-column {
+    background-color: white !important;
+    border: 0 !important;
+    corner-shape: bevel !important;
+}
+
+.sheet-tab-button {
+    color: black !important;
+}
+
+.sheet-tab-button-active {
+    corner-shape: bevel !important;
+    border-radius: 6px !important;
+    background-color: black !important;
+    color: white !important;
+}
+
+.stat-card {
+    corner-shape: bevel !important;
+    border-radius: 10px !important;
+    border: 1px black dashed !important;
+    background: rgba(0, 0, 0, 0) !important;
+    .stat-label {
+        color: black !important;
+    }
+    .stat-value {
+        color: black !important;
+    }
+}
+
+.fraction-bar-label {
+    color: black !important;
+}
+
+.sheet-section-title {
+    color: black !important;
+}
+
+.feature-card {
+    border: 0  !important;
+    border-radius: 0  !important;
+    background: rgba(0, 0, 0, 0) !important;
+    border-bottom: 1px black dashed !important;
+
+    .card-header {
+        .card-title {
+            color: black !important;
+        }
+    }
+}
+
+.card-text {
+    color: black !important;
+}
+
+.arrow {
+    background-color: black;
+    padding: 4px;
+    corner-shape: bevel !important;
+    border-radius: 6px !important;
+}
+
+.fraction-bar-background {
+    corner-shape: bevel !important;
+    border-radius: 6px !important;
+}
+
+.fraction-bar-visual-value {
+    corner-shape: bevel !important;
+    border-radius: 6px !important;
+}
+
+.character-name {
+    color: black !important;
+}

@@ -1,8 +1,12 @@
 import { createApp } from 'vue';
-import Sidebar from '@/components/Sidebar.vue';
+
 import '@/assets/styles/styleMod.css';
+import '@/assets/styles/uniqueMod.css'
+
 import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
+
+import Sidebar from '@/components/Sidebar.vue';
 
 export default defineContentScript({
   matches: ['*://rpgpedia.com/*'],
