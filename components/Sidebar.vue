@@ -1,0 +1,54 @@
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+
+const props = defineProps<{
+    elements: {
+        backBtn: HTMLElement,
+        headerBtns: HTMLElement,
+    }
+}>()
+
+const backBtnRef = ref<HTMLElement | null>(null);
+const headerBtnsRef = ref<HTMLElement | null>(null);
+onMounted(() => {
+  if (backBtnRef.value && props.elements.backBtn) {
+    backBtnRef.value.appendChild(props.elements.backBtn);
+  }
+  if (headerBtnsRef.value && props.elements.headerBtns) {
+    headerBtnsRef.value.appendChild(props.elements.headerBtns);
+  }
+});
+</script>
+
+<template>
+    <div id="sidebar">
+        <div ref="backBtnRef"></div>
+        <div class="sidebar-section">
+            <div ref="headerBtnsRef"></div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+    #sidebar {
+        display: flex;
+        flex-flow: column;
+        gap: 8px;
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        z-index: 10;
+    }
+    
+    .sidebar-section {
+        width: fit-content;
+        padding: 5px;
+        border-radius: 12px;
+        border: 1px solid var(--color-color-stroke-primary, rgba(242, 242, 242, .2));
+        background: var(--color-color-component-level-1, rgba(16, 18, 24, .4));
+        box-shadow: 5px 10px 24px #00000040;
+        -webkit-backdrop-filter: blur(100px);
+        backdrop-filter: blur(100px);
+        filter: var(--fd4ba95a);
+    }
+</style>
