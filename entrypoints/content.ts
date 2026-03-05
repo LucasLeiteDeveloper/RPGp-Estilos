@@ -21,11 +21,15 @@ export default defineContentScript({
 
 async function start(ctx: any) {
   const page = await waitForElement('.universal-sheet-page');
+  // const bg = await waitForElement('.wallpaper-media');
+
   const elements = {
     backBtn: await waitForElement('.back-button[data-v-8b81d767]'),
     headerBtns: await waitForElement('.header-buttons-container'),
     changeSheetBtn: await waitForElement('.change-sheet-mode-button'),
   };
+
+  // bg.remove();
 
   elements.changeSheetBtn.childNodes.forEach(node => {
     if (node.nodeType === Node.TEXT_NODE) {
@@ -33,7 +37,7 @@ async function start(ctx: any) {
     }
   });
 
-  const ui = await createIntegratedUi(ctx, {
+  const uiSidebar = await createIntegratedUi(ctx, {
     position: 'inline',
     anchor: page,
     append: 'first',
@@ -42,5 +46,5 @@ async function start(ctx: any) {
       return createApp(Sidebar, {elements}).mount(sidebar);
     },
   });
-  ui.mount();
+  uiSidebar.mount();
 }

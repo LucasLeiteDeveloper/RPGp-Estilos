@@ -1,10 +1,18 @@
-@font-face {
+/* @font-face {
     font-family: 'Roboto';
     src: url('@/assets/fonts/RobotoCondensed-Bold.ttf') format("truetype");
 }
 
 * {
     font-family: 'Roboto' !important;
+}
+
+.wallpaper {
+    background-color: white !important;
+}
+
+.line-divider {
+    background: none !important;
 }
 
 .simple-stat-card {
@@ -17,6 +25,7 @@
     background-color: white !important;
     border: 0 !important;
     corner-shape: bevel !important;
+    box-shadow: none !important;
 }
 
 .sheet-tab-button {
@@ -87,4 +96,4 @@
 
 .character-name {
     color: black !important;
-}
+} */

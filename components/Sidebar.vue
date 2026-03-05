@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import StyleMenu from '@/components/StyleMenu.vue';
 
 const props = defineProps<{
     elements: {
@@ -26,6 +27,9 @@ onMounted(() => {
         <div class="sidebar-section">
             <div ref="headerBtnsRef"></div>
         </div>
+        <div class="sidebar-section button">
+            <!-- <StyleMenu/> -->
+        </div>
     </div>
 </template>
 
@@ -50,5 +54,10 @@ onMounted(() => {
         -webkit-backdrop-filter: blur(100px);
         backdrop-filter: blur(100px);
         filter: var(--fd4ba95a);
+    }
+
+    .button {
+        width: 64px;
+        height: 64px;
     }
 </style>
