@@ -1,11 +1,11 @@
-@font-face {
+/* @font-face {
     font-family: 'Roboto';
     src: url('@/assets/fonts/RobotoCondensed-Bold.ttf') format("truetype");
-}
+} */
 
-* {
+/* {
     font-family: 'Roboto' !important;
-}
+} */
 
 .wallpaper {
     background-color: white !important;

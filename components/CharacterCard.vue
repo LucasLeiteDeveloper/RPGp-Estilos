@@ -1,14 +1,21 @@
 <script lang="ts" setup>
+import cssText from '@/assets/styles/uniqueMod.css?raw';
+
+function loadCSS() {
+    const style = document.createElement('style');
+    style.textContent = cssText;
+    document.head.appendChild(style);
+}
 </script>
 <template>
-    <button class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
+    <button @click="loadCSS" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
         <div class="button-container">
             <button class="open-options-button">
                 <img src="@/assets/icons/three-dots-icon.svg">
             </button>
         </div>
         <div class="info-container">
-            <div class="character-name ellipsis">Mello Guimarães</div>
+            <div class="character-name ellipsis">Estilo Simples</div>
         </div>
     </button>
 </template>
