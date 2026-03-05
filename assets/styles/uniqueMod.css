@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
     font-family: 'Roboto';
     src: url('@/assets/fonts/RobotoCondensed-Bold.ttf') format("truetype");
 }
@@ -96,4 +96,4 @@
 
 .character-name {
     color: black !important;
-} */
+}

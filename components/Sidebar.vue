@@ -9,6 +9,11 @@ const props = defineProps<{
     }
 }>()
 
+const visible = ref(false);
+function handleVisibilityUpdate(newValue: any) {
+  visible.value = newValue;
+}
+
 const backBtnRef = ref<HTMLElement | null>(null);
 const headerBtnsRef = ref<HTMLElement | null>(null);
 onMounted(() => {
@@ -27,10 +32,9 @@ onMounted(() => {
         <div class="sidebar-section">
             <div ref="headerBtnsRef"></div>
         </div>
-        <div class="sidebar-section button">
-            <!-- <StyleMenu/> -->
-        </div>
+        <button class="sidebar-section button" @click="visible = true"/>
     </div>
+    <StyleMenu :visible="visible" @update:visible="handleVisibilityUpdate"></StyleMenu>
 </template>
 
 <style scoped>
