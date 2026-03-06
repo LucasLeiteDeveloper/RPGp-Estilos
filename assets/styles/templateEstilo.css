@@ -1,0 +1,35 @@
+/* --- GERAIS --- */
+
+/* Wallpaper */
+.wallpaper {}
+.wallpaper-media {}
+
+/* Container com as três colunas */
+.sheet-page {}
+
+/* Coluna */
+.sheet-column {}
+
+/* Divisores */
+.line-divider {}
+.divider {}
+
+/* --- ABAS --- */
+
+/* Aba */
+.sheet-tab {}
+::-webkit-scrollbar {} 
+
+/* Botões de alternar aba */
+.sheet-tabs-navigation {}
+.sheet-tab-button {}
+.sheet-tab-button-active {}
+
+/* Seções das abas */
+.sheet-section {}
+.sheet-section-small-margin{}
+.sheet-section-no-margin{}
+
+.sheet-section-title{}
+.section-content{}
+
