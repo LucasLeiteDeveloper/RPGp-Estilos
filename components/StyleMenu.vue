@@ -1,20 +1,9 @@
 <script lang="ts" setup>
 import CharacterCard from './CharacterCard.vue';
 
-let stylesJSON = localStorage.getItem('Styles');
-let styles = null;
-if (stylesJSON) {
-    styles = JSON.parse(stylesJSON);
-}
+const props = defineProps({ visible: Boolean });
 
-const props = defineProps({
-    visible: Boolean,
-})
-
-const emit = defineEmits(['update:visible']);
-function visibilityUpdate() {
-    emit('update:visible', false);
-}
+const styles = JSON.parse(localStorage.getItem('Styles') ?? '{}');
 </script>
 
 <template>
@@ -26,7 +15,7 @@ function visibilityUpdate() {
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
                     </div>
                     <div data-v-ba37de0e class="close-icon-container">
-                        <button data-v-ba37de0e class="close-icon-button" @click="visibilityUpdate">
+                        <button data-v-ba37de0e class="close-icon-button" @click="visible = false">
                             <img data-v-ba37de0e src="@/assets/icons/close-icon-large.svg" draggable="false">
                         </button>
                     </div>

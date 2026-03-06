@@ -5,24 +5,17 @@ interface StyleProps {
   css: String;
 }
 
-const props = defineProps<{
-  style: StyleProps;
-}>();
+const props = defineProps<{ style: StyleProps }>();
 
-let loadCSS = (newCss: String) => {
-    if (document.head.querySelector('style')) {
-        document.head.querySelector('style')?.remove();
-    };
-    console.log(newCss);
-    if (!newCss) return;
-    
+const loadCSS = (style: String) => {
+    document.head.querySelector('style')?.remove();
+
     const styleTag = document.createElement('style');
-    styleTag.textContent = newCss
+    styleTag.textContent = style
       .replace(/;/g, ' !important;');
     
     document.head.appendChild(styleTag);
-  };
-
+};
 </script>
 <template>
     <button @click="loadCSS(style.css)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
