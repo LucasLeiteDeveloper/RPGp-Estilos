@@ -4,96 +4,96 @@
 } */
 
 /* {
-    font-family: 'Roboto' !important;
+    font-family: 'Roboto';
 } */
 
-/* .wallpaper {
-    background-color: black !important;
+.wallpaper {
+    background-color: black;
 }
 
 .line-divider {
-    background: none !important;
+    background: none;
 }
 
 .simple-stat-card {
-    background: none !important;
-    border: 0 !important;
+    background: none;
+    border: 0;
 }
 .simple-stat-value {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 .simple-stat-label {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 
 .sheet-page {
-    border: 10px #10FE4C double !important
+    border: 10px #10FE4C double;
 }
 .sheet-column {
-    background-color: black !important;
-    border: 0 !important;
-    box-shadow: none !important;
+    background-color: black;
+    border: 0;
+    box-shadow: none;
 }
 
 .sheet-tab-button {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 
 .sheet-tab-button-active {
-    border-radius: 0px !important;
-    border-bottom: 1px #10FE4C dashed !important;
-    background: none !important;
-    color: #10FE4C !important;
+    border-radius: 0px;
+    border-bottom: 1px #10FE4C dashed;
+    background: none;
+    color: #10FE4C;
 }
 
 .stat-card {
-    border-radius: 0px !important;
-    border: none !important;
-    border-top: 1px #10FE4C dashed !important;;
-    background: rgba(0, 0, 0, 0) !important;
+    border-radius: 0px;
+    border: none;
+    border-top: 1px #10FE4C dashed;;
+    background: rgba(0, 0, 0, 0);
     .stat-label {
-        color: #10FE4C !important;
+        color: #10FE4C;
     }
     .stat-value {
-        color: #10FE4C !important;
+        color: #10FE4C;
     }
 }
 
 .fraction-bar-label {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 
 .sheet-section-title {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 
 .feature-card {
-    border: 0  !important;
-    border-radius: 0  !important;
-    background: rgba(0, 0, 0, 0) !important;
-    border-top: 1px #10FE4C dashed !important;
+    border: 0 ;
+    border-radius: 0 ;
+    background: rgba(0, 0, 0, 0);
+    border-top: 1px #10FE4C dashed;
 
     .card-header {
         .card-title {
-            color: #10FE4C !important;
+            color: #10FE4C;
         }
     }
 }
 
 .card-text {
-    color: #10FE4C !important;
+    color: #10FE4C;
 }
 
 .fraction-bar-background {
-    border-radius: 0px !important;
-    border: 1px #10FE4C dashed !important;
+    border-radius: 0px;
+    border: 1px #10FE4C dashed;
 }
 
 .fraction-bar-visual-value {
-    border-radius: 0px !important;
-    border: 1px #10FE4C dashed !important;
+    border-radius: 0px;
+    border: 1px #10FE4C dashed;
 }
 
 .character-name {
-    color: #10FE4C !important;
-} */
+    color: #10FE4C;
+}

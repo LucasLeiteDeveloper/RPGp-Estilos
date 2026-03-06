@@ -4,96 +4,96 @@
 } */
 
 /* {
-    font-family: 'Roboto' !important;
+    font-family: 'Roboto';
 } */
 
 .wallpaper {
-    background-color: white !important;
+    background-color: white;
 }
 
 .line-divider {
-    background: none !important;
+    background: none;
 }
 
 .simple-stat-card {
-    corner-shape: bevel !important;
-    background-color: black !important;
-    border: 0 !important;
+    corner-shape: bevel;
+    background-color: black;
+    border: 0;
 }
 
 .sheet-column {
-    background-color: white !important;
-    border: 0 !important;
-    corner-shape: bevel !important;
-    box-shadow: none !important;
+    background-color: white;
+    border: 0;
+    corner-shape: bevel;
+    box-shadow: none;
 }
 
 .sheet-tab-button {
-    color: black !important;
+    color: black;
 }
 
 .sheet-tab-button-active {
-    corner-shape: bevel !important;
-    border-radius: 6px !important;
-    background-color: black !important;
-    color: white !important;
+    corner-shape: bevel;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
 }
 
 .stat-card {
-    corner-shape: bevel !important;
-    border-radius: 10px !important;
-    border: 1px black dashed !important;
-    background: rgba(0, 0, 0, 0) !important;
+    corner-shape: bevel;
+    border-radius: 10px;
+    border: 1px black dashed;
+    background: rgba(0, 0, 0, 0);
     .stat-label {
-        color: black !important;
+        color: black;
     }
     .stat-value {
-        color: black !important;
+        color: black;
     }
 }
 
 .fraction-bar-label {
-    color: black !important;
+    color: black;
 }
 
 .sheet-section-title {
-    color: black !important;
+    color: black;
 }
 
 .feature-card {
-    border: 0  !important;
-    border-radius: 0  !important;
-    background: rgba(0, 0, 0, 0) !important;
-    border-bottom: 1px black dashed !important;
+    border: 0 ;
+    border-radius: 0 ;
+    background: rgba(0, 0, 0, 0);
+    border-bottom: 1px black dashed;
 
     .card-header {
         .card-title {
-            color: black !important;
+            color: black;
         }
     }
 }
 
 .card-text {
-    color: black !important;
+    color: black;
 }
 
 .arrow {
     background-color: black;
     padding: 4px;
-    corner-shape: bevel !important;
-    border-radius: 6px !important;
+    corner-shape: bevel;
+    border-radius: 6px;
 }
 
 .fraction-bar-background {
-    corner-shape: bevel !important;
-    border-radius: 6px !important;
+    corner-shape: bevel;
+    border-radius: 6px;
 }
 
 .fraction-bar-visual-value {
-    corner-shape: bevel !important;
-    border-radius: 6px !important;
+    corner-shape: bevel;
+    border-radius: 6px;
 }
 
 .character-name {
-    color: black !important;
+    color: black;
 }

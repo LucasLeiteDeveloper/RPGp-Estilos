@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import CharacterCard from './CharacterCard.vue';
 
+let stylesJSON = localStorage.getItem('Styles');
+let styles = null;
+if (stylesJSON) {
+    styles = JSON.parse(stylesJSON);
+}
+
 const props = defineProps({
     visible: Boolean,
 })
@@ -25,8 +31,8 @@ function visibilityUpdate() {
                         </button>
                     </div>
                 </div>
-                <div>
-                    <CharacterCard/>
+                <div class="collection-list">
+                    <CharacterCard v-for="style in styles" :style="style"/>
                 </div>
             </div>
         </div>
@@ -55,5 +61,10 @@ function visibilityUpdate() {
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+.collection-list {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 </style>

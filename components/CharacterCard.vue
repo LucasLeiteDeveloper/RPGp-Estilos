@@ -1,23 +1,38 @@
 <script lang="ts" setup>
-import cssText from '@/assets/styles/uniqueMod.css?raw';
-
-function loadCSS() {
-    cssText.replace(/[\s+]/g, '');
-    cssText.replace(/;/g, '!important;')
-    const style = document.createElement('style');
-    style.textContent = cssText;
-    document.head.appendChild(style);
+interface StyleProps {
+  id: Number;
+  nome: String;
+  css: String;
 }
+
+const props = defineProps<{
+  style: StyleProps;
+}>();
+
+let loadCSS = (newCss: String) => {
+    if (document.head.querySelector('style')) {
+        document.head.querySelector('style')?.remove();
+    };
+    console.log(newCss);
+    if (!newCss) return;
+    
+    const styleTag = document.createElement('style');
+    styleTag.textContent = newCss
+      .replace(/;/g, ' !important;');
+    
+    document.head.appendChild(styleTag);
+  };
+
 </script>
 <template>
-    <button @click="loadCSS" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
+    <button @click="loadCSS(style.css)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
         <div class="button-container">
             <button @click.stop="console.log('OI')" class="open-options-button">
                 <img src="@/assets/icons/three-dots-icon.svg">
             </button>
         </div>
         <div class="info-container">
-            <div class="character-name ellipsis">Estilo Simples</div>
+            <div class="character-name ellipsis">{{ style.nome }}</div>
         </div>
     </button>
 </template>
