@@ -4,6 +4,12 @@ import CharacterCard from './CharacterCard.vue';
 const props = defineProps({ visible: Boolean });
 
 const styles = JSON.parse(localStorage.getItem('Styles') ?? '{}');
+
+const emit = defineEmits<{ 'update:visible': [value: boolean] }>()
+
+const closeModal = () => {
+  emit('update:visible', false);
+}
 </script>
 
 <template>
@@ -15,7 +21,7 @@ const styles = JSON.parse(localStorage.getItem('Styles') ?? '{}');
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
                     </div>
                     <div data-v-ba37de0e class="close-icon-container">
-                        <button data-v-ba37de0e class="close-icon-button" @click="visible = false">
+                        <button data-v-ba37de0e class="close-icon-button" @click="closeModal">
                             <img data-v-ba37de0e src="@/assets/icons/close-icon-large.svg" draggable="false">
                         </button>
                     </div>

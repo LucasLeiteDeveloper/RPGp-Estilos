@@ -181,7 +181,7 @@ const loadCSS = (style: String) => {
 .character-name {
     width: 100%;
     height: 32px;
-    color: var(--color-color-text-primary, #f2f2f2);
+    color: var(--color-color-text-primary, #f2f2f2) !important;
     font-family: Lovera;
     font-size: 26px;
     text-align: left
