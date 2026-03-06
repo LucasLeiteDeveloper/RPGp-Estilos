@@ -32,7 +32,11 @@ onMounted(() => {
         <div class="sidebar-section">
             <div ref="headerBtnsRef"></div>
         </div>
-        <button class="sidebar-section button" @click="visible = true"/>
+        <div class="sidebar-section">
+            <button @click="visible = true" data-v-1af09095 class="universal-button">
+                <img data-v-1af09095 src="@/assets/icons/pincel.svg" draggable="false">
+            </button>
+        </div>
     </div>
     <StyleMenu :visible="visible" @update:visible="handleVisibilityUpdate"></StyleMenu>
 </template>
@@ -58,10 +62,5 @@ onMounted(() => {
         -webkit-backdrop-filter: blur(100px);
         backdrop-filter: blur(100px);
         filter: var(--fd4ba95a);
-    }
-
-    .button {
-        width: 64px;
-        height: 64px;
     }
 </style>

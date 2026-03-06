@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 
 import '@/assets/styles/styleMod.css';
+import '@/assets/styles/codeStyleMod.css';
 
 import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
