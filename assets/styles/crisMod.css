@@ -1,139 +1,129 @@
-/* --- GERAIS --- */
-
-/* Wallpaper */
 .wallpaper {
-    background: #121212 !important;
+    background: #121212;
 }
-.wallpaper-media {}
 
-/* Container com as três colunas */
-.sheet-page {}
-
-/* Coluna */
 .sheet-column {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
+    background: none;
+    border: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
-/* Divisores */
 .line-divider {
-    display: none !important;
+    display: none;
 }
-.divider {}
 
-/* --- ABAS --- */
-
-/* Aba */
-.sheet-tab {}
-::-webkit-scrollbar {} 
-
-/* Botões de alternar aba */
-.sheet-tabs-navigation {}
 .sheet-tab-button {
-    color: rgba(255, 255, 255, .6) !important;
+    color: rgba(255, 255, 255, .6);
 }
 .sheet-tab-button-active {
-    color: #fff !important;
-    background: none !important;
-    border-radius: 0 !important;
-    border-bottom: 2px #A347FF solid !important;
+    color: #fff;
+    background: none;
+    border-radius: 0;
+    border-bottom: 2px #A347FF solid;
 }
 
-/* Seções das abas */
-.sheet-section {}
-.sheet-section-small-margin{}
-.sheet-section-no-margin{}
-
-.sheet-section-title{}
-.section-content{}
-
-/* Pericias */
 .utils-container {
-    display: none !important;
+    display: none;
 }
 
 .skill-label {
-    color: rgba(255, 255, 255, .6) !important;
+    color: rgba(255, 255, 255, .6);
     font-weight: bold;
 }
 
 .skills-list {
-    gap: 6px !important;
+    gap: 6px;
 }
 
 .basic-skill-card {
-    min-height: 0 !important;
-    padding: 4px 12px !important;
-    border: none !important;
-    background: none !important;
+    min-height: 0;
+    padding: 4px 12px;
+    border: none;
+    background: none;
 }
 
 .skill-info-container {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .skill-info-container * {
-    width: fit-content !important;
+    width: fit-content;
 }
 
 .base-label {
-    color: #fff !important;
+    color: #fff;
 }
 
 .base-value {
-    color: #fff !important;
+    color: #fff;
 }
 
 .stats-container[data-v-69d872af] {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 12px !important;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
 }
 
 .stat-row[data-v-69d872af] {
-    flex: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .stat-card[data-v-69d872af] {
-    width: 100% !important;
-    display: flex !important;
-    flex-flow: column-reverse !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 4px !important;
-    padding: 6px 8px !important;
-    border-radius: 18px !important;
-    border: 1px solid rgba(255, 255, 255, .2) !important;
-    background: rgba(46, 49, 58, .4) !important;
+    width: 100%;
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: 0;
+    border: none;
+    background: none;
 }
 
 .stat-card[data-v-69d872af] * {
-    text-align: center !important;
+    text-align: center;
 }
 
 .stat-label[data-v-69d872af] {
-    width: 100% !important;
-    color: #fff !important;
-    font-family: Raleway !important;
-    font-size: 16px !important;
-    min-height: 22px !important;
+    width: 100%;
+    color: #fff;
+    font-family: Raleway;
+    font-size: 16px;
+    min-height: 22px;
 }
 
 .stat-value[data-v-69d872af] {
-    width: 100% !important;
-    min-height: 22px !important;
-    color: #fff !important;
-    font-family: Raleway !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    border-bottom: 1px solid transparent !important;
+    width: 100%;
+    min-height: 22px;
+    color: #fff;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 2px;
+    border: 1px solid #fff;
+}
+
+.simple-stat-card[data-v-5d3516e9] {
+    border-radius: 16px;
+    border: 1px solid #fff;
+    background: none;
+}
+
+.fraction-bar-background {
+    border-radius: 0;
+    border: 1px solid #fff;
+}
+
+.fraction-bar-visual-value {
+    height: 100%;
+    border-radius: 0;
 }

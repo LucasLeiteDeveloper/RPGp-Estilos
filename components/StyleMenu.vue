@@ -36,8 +36,6 @@ const closeModal = () => {
                     <CharacterCard v-for="style in styles" :style="style"/>
                 </div>
             </div>
-            <input type="file" id="cssInput" accept=".css">
-            <button id="saveBtn">Salvar no localStorage</button>
         </div>
     </div>
 

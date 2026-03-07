@@ -2,7 +2,10 @@ import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
 
 import '@/assets/styles/styleMod.css';
-import '@/assets/styles/crisMod.css'
+
+import simpleStyle from '@/assets/styles/uniqueMod.css?raw';
+import codeStyle from '@/assets/styles/codeStyleMod.css?raw';
+import crisStyle from '@/assets/styles/crisMod.css?raw';
 
 import Sidebar from '@/components/Sidebar.vue';
 
@@ -11,6 +14,25 @@ export default defineContentScript({
   cssInjectionMode: 'manifest',
 
   async main(ctx) {
+    let styles = [
+      {
+        id: 1,
+        nome: 'Estilo Simples',
+        css: simpleStyle
+      },
+      {
+        id: 2,
+        nome: 'Estilo Verde',
+        css: codeStyle
+      },
+      {
+        id: 3,
+        nome: 'Estilo Cris',
+        css: crisStyle
+      },
+    ];
+    localStorage.setItem('Styles', JSON.stringify(styles));
+
     observeUrlChange('/ficha/universal/', (url) => {
       start(ctx); 
     });
