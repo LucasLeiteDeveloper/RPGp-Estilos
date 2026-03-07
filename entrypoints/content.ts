@@ -2,6 +2,7 @@ import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
 
 import '@/assets/styles/styleMod.css';
+import '@/assets/styles/crisMod.css'
 
 import Sidebar from '@/components/Sidebar.vue';
 

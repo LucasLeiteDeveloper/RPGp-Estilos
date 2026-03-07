@@ -1,0 +1,139 @@
+/* --- GERAIS --- */
+
+/* Wallpaper */
+.wallpaper {
+    background: #121212 !important;
+}
+.wallpaper-media {}
+
+/* Container com as três colunas */
+.sheet-page {}
+
+/* Coluna */
+.sheet-column {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Divisores */
+.line-divider {
+    display: none !important;
+}
+.divider {}
+
+/* --- ABAS --- */
+
+/* Aba */
+.sheet-tab {}
+::-webkit-scrollbar {} 
+
+/* Botões de alternar aba */
+.sheet-tabs-navigation {}
+.sheet-tab-button {
+    color: rgba(255, 255, 255, .6) !important;
+}
+.sheet-tab-button-active {
+    color: #fff !important;
+    background: none !important;
+    border-radius: 0 !important;
+    border-bottom: 2px #A347FF solid !important;
+}
+
+/* Seções das abas */
+.sheet-section {}
+.sheet-section-small-margin{}
+.sheet-section-no-margin{}
+
+.sheet-section-title{}
+.section-content{}
+
+/* Pericias */
+.utils-container {
+    display: none !important;
+}
+
+.skill-label {
+    color: rgba(255, 255, 255, .6) !important;
+    font-weight: bold;
+}
+
+.skills-list {
+    gap: 6px !important;
+}
+
+.basic-skill-card {
+    min-height: 0 !important;
+    padding: 4px 12px !important;
+    border: none !important;
+    background: none !important;
+}
+
+.skill-info-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.skill-info-container * {
+    width: fit-content !important;
+}
+
+.base-label {
+    color: #fff !important;
+}
+
+.base-value {
+    color: #fff !important;
+}
+
+.stats-container[data-v-69d872af] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+}
+
+.stat-row[data-v-69d872af] {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.stat-card[data-v-69d872af] {
+    width: 100% !important;
+    display: flex !important;
+    flex-flow: column-reverse !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    padding: 6px 8px !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, .2) !important;
+    background: rgba(46, 49, 58, .4) !important;
+}
+
+.stat-card[data-v-69d872af] * {
+    text-align: center !important;
+}
+
+.stat-label[data-v-69d872af] {
+    width: 100% !important;
+    color: #fff !important;
+    font-family: Raleway !important;
+    font-size: 16px !important;
+    min-height: 22px !important;
+}
+
+.stat-value[data-v-69d872af] {
+    width: 100% !important;
+    min-height: 22px !important;
+    color: #fff !important;
+    font-family: Raleway !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    border-bottom: 1px solid transparent !important;
+}
