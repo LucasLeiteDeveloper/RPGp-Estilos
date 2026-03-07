@@ -13,12 +13,18 @@ const closeModal = () => {
 </script>
 
 <template>
-    <div data-v-73fe9ed0 class="modal-container" v-if="visible">
+    <div data-v-73fe9ed0 class="modal-container" :class="{ 'invisible': !visible }">
         <div class="modal-component">
             <div class="modal-container">
                 <div data-v-ba37de0e class="title-row">
                     <div data-v-ba37de0e class="title-container">
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
+                        <button class="base-button" style="--bg: #b688ff;">
+                            <div> Importar estilo </div>
+                        </button>
+                        <button class="base-button" style="--bg: #f2f2f2;">
+                            <div> Criar estilo </div>
+                        </button>
                     </div>
                     <div data-v-ba37de0e class="close-icon-container">
                         <button data-v-ba37de0e class="close-icon-button" @click="closeModal">
@@ -36,20 +42,20 @@ const closeModal = () => {
 
 <style>
 .modal-component {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 1192px !important;
-    max-width: 1192px !important;
-    height: 556px !important;
-    max-height: 556px !important;
-    padding: 18px !important;
-    border-radius: 12px !important;
-    border: 1px solid rgba(255, 255, 255, .2) !important;
-    background:rgba(16, 18, 24, .4) !important;
-    box-shadow: 5px 10px 24px #00000040 !important;
-    -webkit-backdrop-filter: blur(100px) !important;
-    backdrop-filter: blur(100px) !important;
-    z-index: 9999 !important;
+    display: flex;
+    flex-direction: column;
+    width: 1192px;
+    max-width: 1192px;
+    height: 556px;
+    max-height: 556px;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background:rgba(16, 18, 24, .4);
+    box-shadow: 5px 10px 24px #00000040;
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    z-index: 9999;
 }
 .modal-container {
     height: 100%;
@@ -59,7 +65,25 @@ const closeModal = () => {
 }
 .collection-list {
     display: flex;
-    gap: 24px;
+    gap: 12px;
     flex-wrap: wrap;
+}
+.base-button {
+    font-size: 14px;
+    width: fit-content;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(242, 242, 242, .2);
+    background: var(--bg);
+    color: #060517;
+    font-family: Poppins;
+    font-weight: 500;
+}
+.invisible {
+    display: none !important;
 }
 </style>

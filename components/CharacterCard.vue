@@ -7,30 +7,51 @@ interface StyleProps {
 
 const props = defineProps<{ style: StyleProps }>();
 
-const loadCSS = (style: String) => {
-    document.head.querySelector('style')?.remove();
+const checkBtnState = (event: any) => {
+    const activatedBtn = document.querySelector('.character-card-selected');
+    if (activatedBtn && activatedBtn != event.target) {
+        activatedBtn.classList.remove('character-card-selected');
+        event.target.classList.add('character-card-selected');
+        return true;
+    } else if (activatedBtn && activatedBtn == event.target) {
+        activatedBtn.classList.remove('character-card-selected');
+        return false
+    } else {
+        event.target.classList.add('character-card-selected');
+        return true
+    }
+}
 
-    const styleTag = document.createElement('style');
-    styleTag.textContent = style
-      .replace(/;/g, ' !important;');
-    
-    document.head.appendChild(styleTag);
+const styleToogle = (style: String, event: any) => {
+    if (checkBtnState(event)) {
+        document.head.querySelector('style')?.remove();
+        const styleTag = document.createElement('style');
+        styleTag.textContent = style
+            .replace(/;/g, ' !important;');
+        document.head.appendChild(styleTag);
+    } else {
+        document.head.querySelector('style')?.remove();
+    }
 };
 </script>
 <template>
-    <button @click="loadCSS(style.css)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
-        <div class="button-container">
-            <button @click.stop="console.log('OI')" class="open-options-button">
+    <button @click.self="styleToogle(style.css, $event)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
+        <div class="button-container click-through">
+            <button @click.self="console.log('OI')" class="open-options-button">
                 <img src="@/assets/icons/three-dots-icon.svg">
             </button>
         </div>
-        <div class="info-container">
+        <div class="info-container click-through">
             <div class="character-name ellipsis">{{ style.nome }}</div>
         </div>
     </button>
 </template>
 
 <style scoped>
+.click-through {
+  pointer-events: none;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -83,6 +104,10 @@ const loadCSS = (style: String) => {
     aspect-ratio: 1/1
 }
 
+.character-card-selected {
+    border: 1px solid rgb(182, 136, 255);
+}
+
 @media (max-width: 1440px) {
     .character-card {
         width:218px;
@@ -116,6 +141,7 @@ const loadCSS = (style: String) => {
     box-shadow: 5px 10px 24px #00000040;
     -webkit-backdrop-filter: blur(100px);
     backdrop-filter: blur(100px);
+    pointer-events: auto;
 }
 
 .options-container {

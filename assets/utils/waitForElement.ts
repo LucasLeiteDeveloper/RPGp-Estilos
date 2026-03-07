@@ -5,7 +5,7 @@ export function waitForElement(selector: string): Promise<HTMLElement> {
       if (element) {
         return resolve(element as HTMLElement);
       }
-  
+      
       // Caso contrário, observa mudanças no corpo da página
       const observer = new MutationObserver(() => {
         const target = document.querySelector(selector);
