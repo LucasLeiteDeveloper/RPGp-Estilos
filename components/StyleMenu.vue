@@ -1,15 +1,20 @@
 <script lang="ts" setup>
 import CharacterCard from './CharacterCard.vue';
+import ImportModal from './ImportModal.vue';
+
+import { styleStorage } from '@/assets/utils/styleStorage';
 
 const props = defineProps({ visible: Boolean });
-
-const styles = JSON.parse(localStorage.getItem('Styles') ?? '{}');
-
 const emit = defineEmits<{ 'update:visible': [value: boolean] }>()
 
-const closeModal = () => {
-  emit('update:visible', false);
-}
+let styles = ref(styleStorage.getAll());
+onMounted(() => {
+    window.addEventListener('styleAdded', (event: any) => {
+        styles.value.push(event.detail.newStyle);
+    });
+});
+
+function closeModal() { emit('update:visible', false); }
 </script>
 
 <template>
@@ -21,9 +26,6 @@ const closeModal = () => {
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
                         <button class="base-button" style="--bg: #b688ff;">
                             <div> Importar estilo </div>
-                        </button>
-                        <button class="base-button" style="--bg: #f2f2f2;">
-                            <div> Criar estilo </div>
                         </button>
                     </div>
                     <div data-v-ba37de0e class="close-icon-container">
@@ -37,8 +39,8 @@ const closeModal = () => {
                 </div>
             </div>
         </div>
+        <ImportModal/>
     </div>
-
 </template>
 
 <style>
