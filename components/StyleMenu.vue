@@ -7,6 +7,8 @@ import { styleStorage } from '@/assets/utils/styleStorage';
 const props = defineProps({ visible: Boolean });
 const emit = defineEmits<{ 'update:visible': [value: boolean] }>()
 
+const importVisible = ref(false)
+
 let styles = ref(styleStorage.getAll());
 onMounted(() => {
     window.addEventListener('styleAdded', (event: any) => {
@@ -28,7 +30,7 @@ function closeModal() { emit('update:visible', false); }
                 <div data-v-ba37de0e class="title-row">
                     <div data-v-ba37de0e class="title-container">
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
-                        <button class="base-button" style="--bg: #b688ff;">
+                        <button @click="importVisible = true" class="base-button" style="--bg: #b688ff;">
                             <div> Importar estilo </div>
                         </button>
                     </div>
@@ -43,7 +45,7 @@ function closeModal() { emit('update:visible', false); }
                 </div>
             </div>
         </div>
-        <ImportModal/>
+        <ImportModal v-model:importVisible="importVisible"/>
     </div>
 </template>
 

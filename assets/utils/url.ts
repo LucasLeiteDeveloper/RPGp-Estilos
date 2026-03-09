@@ -7,6 +7,8 @@ export function observeUrlChange(pattern: string | RegExp, callback: (url: strin
         : pattern.test(url);
       if (isMatch) {
         callback(url);
+      } else {
+        document.head.querySelector('style')?.remove();
       }
     };
   
@@ -21,6 +23,4 @@ export function observeUrlChange(pattern: string | RegExp, callback: (url: strin
     observer.observe(document, { subtree: true, childList: true });
 
     checkUrl(lastUrl);
-
-    return () => observer.disconnect();
   }
