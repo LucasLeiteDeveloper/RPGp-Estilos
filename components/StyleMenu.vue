@@ -12,6 +12,10 @@ onMounted(() => {
     window.addEventListener('styleAdded', (event: any) => {
         styles.value.push(event.detail.newStyle);
     });
+    window.addEventListener('styleDeleted', (event: any) => {
+        console.log('Oi')
+        styles.value = styleStorage.getAll();
+    });
 });
 
 function closeModal() { emit('update:visible', false); }

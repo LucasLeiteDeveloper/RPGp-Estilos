@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core';
+import { styleStorage } from '@/assets/utils/styleStorage';
+
 interface StyleProps {
   id: Number;
   nome: String;
@@ -6,6 +9,10 @@ interface StyleProps {
 }
 
 const props = defineProps<{ style: StyleProps }>();
+const optionsVisible = ref<boolean>(false);
+const optionsContainer = ref(null);
+
+onClickOutside(optionsContainer, () => {optionsVisible.value = false});
 
 const checkBtnState = (event: any) => {
     const activatedBtn = document.querySelector('.character-card-selected');
@@ -37,9 +44,17 @@ const styleToogle = (style: String, event: any) => {
 <template>
     <button @click.self="styleToogle(style.css, $event)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
         <div class="button-container click-through">
-            <button @click.self="console.log('OI')" class="open-options-button">
+            <button @click="optionsVisible = true" class="open-options-button">
                 <img src="@/assets/icons/three-dots-icon.svg">
             </button>
+            <div ref="optionsContainer" class="options-container" v-if="optionsVisible">
+                <button class="option-button" @click="styleStorage.deleteStyle(style.id); optionsVisible = false">
+                    <span class="option-label"> Deletar </span>
+                </button>
+                <button class="option-button">
+                    <span class="option-label"> Renomear </span>
+                </button>
+            </div>
         </div>
         <div class="info-container click-through">
             <div class="character-name ellipsis">{{ style.nome }}</div>
@@ -159,7 +174,8 @@ const styleToogle = (style: String, event: any) => {
     background: var(--color-color-component-level-1, rgba(16, 18, 24, .7));
     box-shadow: 5px 10px 24px #00000040;
     -webkit-backdrop-filter: blur(100px);
-    backdrop-filter: blur(100px)
+    backdrop-filter: blur(100px);
+    pointer-events: auto;
 }
 
 .option-button {
