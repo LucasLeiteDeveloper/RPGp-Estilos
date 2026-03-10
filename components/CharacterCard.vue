@@ -8,7 +8,7 @@ interface StyleProps {
   css: String;
 }
 
-const props = defineProps<{ style: StyleProps }>();
+const props = defineProps<{ style: StyleProps, renameVisible: Boolean, styleToRename: any }>();
 const optionsVisible = ref<boolean>(false);
 const optionsContainer = ref(null);
 
@@ -40,6 +40,10 @@ const styleToogle = (style: String, event: any) => {
         document.head.querySelector('style')?.remove();
     }
 };
+
+const emit = defineEmits<{ 'update:renameVisible': [value: boolean], 'update:styleToRename': [value: any],}>();
+function openRenameModal() { emit('update:renameVisible', true); }
+function sendRenameId(id: any) { emit('update:styleToRename', id); }
 </script>
 <template>
     <button @click.self="styleToogle(style.css, $event)" class="character-card" style="--112dad90: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 58.41%, rgba(0, 0, 0, 0.90) 100%), url(@/assets/icons/shenron-discord.png); --e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
@@ -51,7 +55,7 @@ const styleToogle = (style: String, event: any) => {
                 <button class="option-button" @click="styleStorage.deleteStyle(style.id); optionsVisible = false">
                     <span class="option-label"> Deletar </span>
                 </button>
-                <button class="option-button">
+                <button class="option-button" @click="() => {openRenameModal(); sendRenameId(style.id)}">
                     <span class="option-label"> Renomear </span>
                 </button>
             </div>

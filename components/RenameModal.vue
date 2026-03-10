@@ -1,48 +1,28 @@
 <script lang="ts" setup>
-import { importCss } from '@/assets/utils/importCss';
-
-const props = defineProps({ importVisible: Boolean });
-const emit = defineEmits<{ 'update:importVisible': [value: boolean] }>();
+import { styleStorage } from '@/assets/utils/styleStorage';
+const props = defineProps({ renameVisible: Boolean, id: Number });
+const emit = defineEmits<{ 'update:renameVisible': [value: boolean] }>();
 
 function closeModal() { 
-  emit('update:importVisible', false);
-  file.value = null;
-  canImport.value = false
+    emit('update:renameVisible', false);
+    newName.value = '';
 }
 
-const inputFile = ref<HTMLInputElement | null>(null);
-function openFileSelect() { inputFile.value?.click(); };
-
-const file = ref<any>(null);
-const canImport = ref(false);
-function checkFile(event: any) {
-  if (!event.target?.files[0])
-    return canImport.value = false;
-  file.value = event.target?.files[0]
-
-  canImport.value = true;
-}
+const newName = ref('');
 </script>
 
 <template>
-  <div class="modal-container" v-if="importVisible">
+  <div class="modal-container" v-if="renameVisible">
     <div class="modal-component">
       <div class="modal-content">
-        <div data-v-cd75c131 class="modal-title"> Importar estilo </div>
-        <div class="modal-description">
-          <p>Selecione um arquivo com a extensão <strong>.CSS</strong> no campo abaixo para continuar.</p>
-        </div>
-        <input ref='inputFile' @change="checkFile($event)" type="file" id="cssInput" accept=".css" style="display: none;"/>
-        <button @click="openFileSelect()" class="file-select">
-          <img src="" alt="" class="file-img">
-          <label class="file-label"> {{ file?.name ?? 'Selecionar arquivo' }} </label>
-        </button>
+        <div data-v-cd75c131 class="modal-title"> Renomear Estilo </div>
+        <input v-model="newName" class="base-input" type="text" placeholder="Escreva aqui" maxlength="128" style="--006b5ae5: 100%; --82ae5dda: left;">
         <div data-v-cd75c131 class="buttons-container">
           <button @click="closeModal" data-v-0f9882be data-v-cd75c131 class="base-button base-button-secondary" style="--4aa81e10: 16px; --9ae9ccda: fit-content; --2ca0e07c: 26px; --53d9c7dd: 6px; --026c3fb0: 6px; --2793b7e4: #B688FF; --af39746a: #060517;"><!---->
             <div data-v-0f9882be> Cancelar </div>
           </button>
-          <button @click="() => {importCss(file); closeModal()}" data-v-0f9882be data-v-cd75c131 class="base-button" :disabled="!canImport" :class="{ 'base-button-disabled': !canImport, 'base-button-primary': canImport,}" style="--4aa81e10: 16px; --9ae9ccda: fit-content; --2ca0e07c: 26px; --53d9c7dd: 6px; --026c3fb0: 6px;">
-            <div data-v-0f9882be> Importar Estilo </div>
+          <button @click="() => {styleStorage.renameStyle(props.id, newName); closeModal()}" data-v-0f9882be data-v-cd75c131 class="base-button base-button-primary" style="--4aa81e10: 16px; --9ae9ccda: fit-content; --2ca0e07c: 26px; --53d9c7dd: 6px; --026c3fb0: 6px;">
+            <div data-v-0f9882be> Renomear Estilo </div>
           </button>
         </div>
       </div>
@@ -97,25 +77,21 @@ function checkFile(event: any) {
     font-size: 16px;
     line-height: 120%;
 }
-.file-select {
-  width: 204px;
-  height: 204px;
-  border-radius: 6px;
-  border: 1px solid rgba(242, 242, 242, .2);
-  background: #2E313A;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 6px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  aspect-ratio: 1/1;
-}
 
-.file-label {
-  font-size: 15px;
+.base-input {
+    width: var(--006b5ae5);
+    height: 32px;
+    padding: 9px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--color-color-stroke-input-default, #85878c);
+    background: var(--color-color-component-level-2, #2e313a);
+    color: var(--color-color-text-primary, #f2f2f2);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-align: var(--82ae5dda);
 }
 
 .buttons-container {
