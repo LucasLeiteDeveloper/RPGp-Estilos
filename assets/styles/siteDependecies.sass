@@ -1,0 +1,97 @@
+// Aquis estão as classes do site original que são usadas na extensão
+// Não estou usando diretamente dos arquivos carregados do site para evitar que o estilo da extensão quebre caso o site atualize
+    
+// Botões
+.universal-button
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 52px
+    height: 52px
+    border-radius: 12px
+    border: 1px solid rgba(255, 255, 255, .2)
+    background:#10121866
+    box-shadow: 5px 10px 24px #00000040
+    -webkit-backdrop-filter: blur(100px)
+    backdrop-filter: blur(100px)
+
+    img
+        width: 24px
+        height: 24px
+
+.base-button
+    font-size: 14px
+    width: fit-content
+    height: 26px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 6px
+    border-radius: 8px
+    border: 1px solid rgba(242, 242, 242, .2)
+    background: var(--bg)
+    color: #060517
+    font-weight: 500
+
+// Modais
+.modal-background-overlay
+    position: fixed
+    z-index: 9999
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: #00000080
+    display: flex
+    align-items: center
+    justify-content: center
+
+.modal-component
+    display: flex
+    flex-direction: column
+    width: 1192px
+    max-width: 1192px
+    height: 556px
+    max-height: 556px
+    padding: 18px
+    border-radius: 12px
+    border: 1px solid rgba(255, 255, 255, .2)
+    background: rgba(16, 18, 24, .4)
+    box-shadow: 5px 10px 24px #00000040
+    -webkit-backdrop-filter: blur(100px)
+    backdrop-filter: blur(100px)
+    z-index: 9999
+
+.modal-component.form-modal
+    width: 560px
+    max-width: 600px
+    height: fit-content
+    max-height: 600px
+
+.modal-content
+    display: flex
+    flex-direction: column
+    height: 100%
+    gap: 18px
+
+// Header do modal
+.modal-title
+    color: #fff
+    font-family: Poppins
+    font-size: 24px
+
+.modal-description
+    display: flex
+    flex-direction: column
+    gap: 6px
+    font-family: Raleway
+    font-size: 16px
+    line-height: 120%
+
+// Outros
+.collection-list
+    display: flex
+    height: 100%;
+    gap: 16px
+    flex-wrap: wrap
+    overflow-y: scroll

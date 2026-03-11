@@ -23,9 +23,9 @@ function closeModal() { emit('update:visible', false); }
 </script>
 
 <template>
-    <div data-v-73fe9ed0 class="modal-container" :class="{ 'invisible': !visible }">
-        <div class="modal-component">
-            <div class="modal-container">
+    <div class="modal-background-overlay" :class="{ 'invisible': !visible }">
+        <div class="modal-component style-menu-modal">
+            <div class="modal-content">
                 <div data-v-ba37de0e class="title-row">
                     <div data-v-ba37de0e class="title-container">
                         <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
@@ -49,51 +49,7 @@ function closeModal() { emit('update:visible', false); }
     </div>
 </template>
 
-<style lang="sass">
-.modal-component
-    display: flex
-    flex-direction: column
-    width: 1192px
-    max-width: 1192px
-    height: 556px
-    max-height: 556px
-    padding: 18px
-    border-radius: 12px
-    border: 1px solid rgba(255, 255, 255, .2)
-    background:rgba(16, 18, 24, .4)
-    box-shadow: 5px 10px 24px #00000040
-    -webkit-backdrop-filter: blur(100px)
-    backdrop-filter: blur(100px)
-    z-index: 9999
-
-.modal-container
-    height: 100%
-    display: flex
-    flex-direction: column
-    gap: 18px
-
-.collection-list
-    display: flex
-    height: 100%;
-    gap: 16px
-    flex-wrap: wrap
-    overflow-y: scroll
-
-.base-button
-    font-size: 14px
-    width: fit-content
-    height: 26px
-    display: flex
-    align-items: center
-    justify-content: center
-    padding: 6px
-    border-radius: 8px
-    border: 1px solid rgba(242, 242, 242, .2)
-    background: var(--bg)
-    color: #060517
-    font-family: Poppins
-    font-weight: 500
-
+<style lang="sass" scoped>
 .invisible
     display: none !important
 </style>

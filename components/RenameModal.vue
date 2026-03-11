@@ -4,15 +4,15 @@ const props = defineProps({ renameVisible: Boolean, id: Number });
 const emit = defineEmits<{ 'update:renameVisible': [value: boolean] }>();
 
 function closeModal() { 
-    emit('update:renameVisible', false);
-    newName.value = '';
+  emit('update:renameVisible', false);
+  newName.value = '';
 }
 
 const newName = ref('');
 </script>
 
 <template>
-  <div class="modal-container" v-if="renameVisible">
+  <div class="modal-background-overlay" v-if="renameVisible">
     <div class="modal-component">
       <div class="modal-content">
         <div data-v-cd75c131 class="modal-title"> Renomear Estilo </div>

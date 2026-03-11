@@ -2,6 +2,7 @@ import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
 
 import '@/assets/styles/siteMod.sass';
+import '@/assets/styles/siteDependecies.sass';
 
 import Sidebar from '@/components/Sidebar.vue';
 
@@ -26,9 +27,7 @@ async function start(ctx: any) {
   };
 
   elements.changeSheetBtn.childNodes.forEach(node => {
-    if (node.nodeType === Node.TEXT_NODE) {
-        node.remove();
-    }
+    if (node.nodeType === Node.TEXT_NODE) node.remove();
   });
 
   const ui = await createIntegratedUi(ctx, {

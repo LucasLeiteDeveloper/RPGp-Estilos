@@ -15,18 +15,18 @@ function openFileSelect() { inputFile.value?.click(); };
 
 const file = ref<any>(null);
 const canImport = ref(false);
+
 function checkFile(event: any) {
   if (!event.target?.files[0])
     return canImport.value = false;
-  file.value = event.target?.files[0]
-
+  file.value = event.target?.files[0];
   canImport.value = true;
 }
 </script>
 
 <template>
-  <div class="modal-container" v-if="importVisible">
-    <div class="modal-component">
+  <div class="modal-background-overlay" v-if="importVisible">
+    <div class="modal-component form-modal">
       <div class="modal-content">
         <div data-v-cd75c131 class="modal-title"> Importar estilo </div>
         <div class="modal-description">
@@ -51,52 +51,6 @@ function checkFile(event: any) {
 </template>
 
 <style scoped>
-.modal-container {
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #00000080;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.modal-component {
-    display: flex;
-    flex-direction: column;
-    width: 560px;
-    max-width: 600px;
-    height: fit-content;
-    max-height: 600px;
-    padding: 18px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, .2);
-    background: rgba(16, 18, 24, .4);
-    box-shadow: 5px 10px 24px #00000040;
-    -webkit-backdrop-filter: blur(100px);
-    backdrop-filter: blur(100px);
-    z-index: 99999;
-}
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.modal-title {
-    color: #fff;
-    font-family: Poppins;
-    font-size: 24px;
-}
-.modal-description {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-family: Raleway;
-    font-size: 16px;
-    line-height: 120%;
-}
 .file-select {
   width: 204px;
   height: 204px;

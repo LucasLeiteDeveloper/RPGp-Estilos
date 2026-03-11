@@ -19,7 +19,7 @@ const visible = ref<boolean>(false);
             <div v-mount="elements.headerBtns" />
         </div>
         <div class="sidebar-section">
-            <button @click="visible = true" data-v-1af09095 class="universal-button">
+            <button @click="visible = true" class="universal-button">
                 <img data-v-1af09095 src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>
@@ -27,26 +27,24 @@ const visible = ref<boolean>(false);
     <StyleMenu v-model:visible="visible"></StyleMenu>
 </template>
 
-<style scoped>
-    .sidebar {
-        display: flex;
-        flex-flow: column;
-        gap: 8px;
-        position: absolute;
-        top: 18px;
-        left: 18px;
-        z-index: 10;
-    }
+<style lang="sass" scoped>
+.sidebar
+    display: flex
+    flex-flow: column
+    position: absolute
+    top: 18px
+    left: 18px
+    gap: 8px
+    z-index: 10
     
-    .sidebar-section {
-        width: fit-content;
-        padding: 5px;
-        border-radius: 12px;
-        border: 1px solid rgba(242, 242, 242, .2);
-        background: rgba(16, 18, 24, .4);
-        box-shadow: 5px 10px 24px #00000040;
-        -webkit-backdrop-filter: blur(100px);
-        backdrop-filter: blur(100px);
-        filter: none;
-    }
+.sidebar-section
+    width: fit-content
+    padding: 5px
+    border-radius: 12px
+    border: 1px solid rgba(242, 242, 242, .2)
+    background: rgba(16, 18, 24, .4)
+    box-shadow: 5px 10px 24px #00000040
+    -webkit-backdrop-filter: blur(100px)
+    backdrop-filter: blur(100px)
+    filter: none
 </style>
