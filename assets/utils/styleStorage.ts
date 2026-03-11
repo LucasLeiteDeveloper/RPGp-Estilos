@@ -27,7 +27,8 @@ export const styleStorage = {
     const styles = this.getAll();
     const filteredStyles = styles.filter(item => item.id !== id);
     this.save(filteredStyles);
-     window.dispatchEvent( new CustomEvent('styleDeleted', {}) );
+    
+    window.dispatchEvent( new CustomEvent('styleDeleted', {}) );
   },
 
   renameStyle(id: any, newName: any) {

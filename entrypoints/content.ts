@@ -1,7 +1,7 @@
 import { waitForElement } from '@/assets/utils/waitForElement';
 import { observeUrlChange } from '@/assets/utils/url';
 
-import '@/assets/styles/styleMod.css';
+import '@/assets/styles/siteMod.sass';
 
 import Sidebar from '@/components/Sidebar.vue';
 
@@ -9,7 +9,7 @@ export default defineContentScript({
   matches: ['*://rpgpedia.com/*'],
   cssInjectionMode: 'manifest',
 
-  async main(ctx) {
+  async main(ctx: any) {
     observeUrlChange('/ficha/universal/', (url) => {
       start(ctx); 
     });
@@ -36,7 +36,7 @@ async function start(ctx: any) {
     anchor: page,
     append: 'first',
 
-    onMount: (sb) => {
+    onMount: (sb: any) => {
       return createApp(Sidebar, {elements}).mount(sb);
     },
   });
