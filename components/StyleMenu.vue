@@ -12,7 +12,7 @@ const importVisible = ref(false);
 const renameVisible = ref(false);
 const styleToRename = ref();
 
-let styles = ref(styleStorage.getAll());
+const styles = ref(styleStorage.getAll());
 onMounted(() => {
     window.addEventListener('styleAdded', (event: any) => { styles.value.push(event.detail.newStyle) });
     window.addEventListener('styleDeleted', () => { styles.value = styleStorage.getAll() });
@@ -26,16 +26,16 @@ function closeModal() { emit('update:visible', false); }
     <div class="modal-background-overlay" :class="{ 'invisible': !visible }">
         <div class="modal-component style-menu-modal">
             <div class="modal-content">
-                <div data-v-ba37de0e class="title-row">
-                    <div data-v-ba37de0e class="title-container">
-                        <div data-v-ba37de0e class="modal-title">Meus Estilos</div>
+                <div class="title-row">
+                    <div class="title-container">
+                        <div class="modal-title style-menu-title">Meus Estilos</div>
                         <button @click="importVisible = true" class="base-button" style="--bg: #b688ff;">
                             <div> Importar estilo </div>
                         </button>
                     </div>
-                    <div data-v-ba37de0e class="close-icon-container">
-                        <button data-v-ba37de0e class="close-icon-button" @click="closeModal">
-                            <img data-v-ba37de0e src="@/assets/icons/close-icon-large.svg" draggable="false">
+                    <div class="close-icon-container">
+                        <button @click="closeModal" class="close-icon-button">
+                            <img src="@/assets/icons/close-icon-large.svg" draggable="false">
                         </button>
                     </div>
                 </div>
@@ -44,12 +44,16 @@ function closeModal() { emit('update:visible', false); }
                 </div>
             </div>
         </div>
-        <ImportModal v-model:importVisible="importVisible"/>
-        <RenameModal v-model:id="styleToRename" v-model:renameVisible="renameVisible"/>
+        <ImportModal v-if="importVisible" v-model:importVisible="importVisible"/>
+        <RenameModal v-if="renameVisible" :id="styleToRename" v-model:renameVisible="renameVisible"/>
     </div>
 </template>
 
 <style lang="sass" scoped>
+.style-menu-title
+    font-size: 32px
+    font-weight: 500
+
 .invisible
     display: none !important
 </style>
