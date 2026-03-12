@@ -1,15 +1,22 @@
 <script lang="ts" setup>
 import { vMount } from '@/assets/utils/vMount';
+import { waitForElement } from '@/assets/utils/waitForElement';
 import StyleMenu from '@/components/StyleMenu.vue';
 
-interface ElementsProps {
-  backBtn: HTMLElement;
-  headerBtns: HTMLElement;
-}
-
-const props = defineProps<{ elements: ElementsProps }>();
-
+const elements = ref<any>(null);
 const visible = ref<boolean>(false);
+
+onMounted(async () => {
+    elements.value = {
+        backBtn: await waitForElement('.back-button[data-v-8b81d767]'),
+        headerBtns: await waitForElement('.header-buttons-container'),
+        changeSheetBtn: await waitForElement('.change-sheet-mode-button'),
+    };
+
+    elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
+        if (node.nodeType === Node.TEXT_NODE) node.remove();
+    });
+});
 </script>
 
 <template>
@@ -20,7 +27,7 @@ const visible = ref<boolean>(false);
         </div>
         <div class="sidebar-section">
             <button @click="visible = true" class="universal-button">
-                <img data-v-1af09095 src="@/assets/icons/pincel.svg" draggable="false">
+                <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>
     </div>

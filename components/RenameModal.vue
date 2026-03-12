@@ -15,9 +15,9 @@ function closeModal() {
 
 <template>
   <Modal>
-    <div data-v-cd75c131 class="modal-title"> Renomear Estilo </div>
+    <div class="modal-title"> Renomear Estilo </div>
     <input v-model="newName" class="base-input" type="text" placeholder="Escreva aqui" maxlength="128" style="--006b5ae5: 100%; --82ae5dda: left;">
-    <div data-v-cd75c131 class="buttons-container">
+    <div class="buttons-container">
       <button @click="closeModal" class="base-button base-button-secondary">
         <div> Cancelar </div>
       </button>
