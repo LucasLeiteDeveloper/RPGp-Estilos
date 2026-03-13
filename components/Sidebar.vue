@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { vMount } from '@/assets/utils/vMount';
 import { waitForElement } from '@/assets/utils/waitForElement';
-import StyleMenu from '@/components/StyleMenu.vue';
+import { useShowStore } from '@/assets/stores/showStore';
+
+const show = useShowStore();
 
 const elements = ref<any>(null);
-const visible = ref<boolean>(false);
 
 onMounted(async () => {
     elements.value = {
@@ -26,12 +27,11 @@ onMounted(async () => {
             <div v-mount="elements.headerBtns" />
         </div>
         <div class="sidebar-section">
-            <button @click="visible = true" class="universal-button">
+            <button @click="show.selectorModal = true" class="universal-button">
                 <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>
     </div>
-    <StyleMenu v-model:visible="visible"></StyleMenu>
 </template>
 
 <style lang="sass" scoped>

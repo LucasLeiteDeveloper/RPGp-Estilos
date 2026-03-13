@@ -1,51 +1,37 @@
 <script lang="ts" setup>
-import CharacterCard from './CharacterCard.vue';
-import ImportModal from './ImportModal.vue';
-import RenameModal from './RenameModal.vue';
+import { useShowStore } from '@/assets/stores/showStore';
+import { useStylesStore } from '@/assets/stores/stylesStore';
 
-import { styleStorage } from '@/assets/utils/styleStorage';
+import CharacterCard from './CharacterCard.vue';
 
 const props = defineProps({ visible: Boolean });
-const emit = defineEmits<{ 'update:visible': [value: boolean] }>()
 
-const importVisible = ref(false);
-const renameVisible = ref(false);
-const styleToRename = ref();
-
-const styles = ref(styleStorage.getAll());
-onMounted(() => {
-    window.addEventListener('styleAdded', (event: any) => { styles.value.push(event.detail.newStyle) });
-    window.addEventListener('styleDeleted', () => { styles.value = styleStorage.getAll() });
-    window.addEventListener('styleRenamed', () => { styles.value = styleStorage.getAll() });
-});
-
-function closeModal() { emit('update:visible', false); }
+const styles = useStylesStore();
+const show = useShowStore();
 </script>
 
 <template>
-    <div class="modal-background-overlay" :class="{ 'invisible': !visible }">
+    <div class="modal-background-overlay">
         <div class="modal-component style-menu-modal">
             <div class="modal-content">
                 <div class="title-row">
                     <div class="title-container">
                         <div class="modal-title style-menu-title">Meus Estilos</div>
-                        <button @click="importVisible = true" class="base-button" style="--bg: #b688ff;">
+                        <button @click="show.importModal = true" class="base-button" style="--bg: #b688ff;">
                             <div> Importar estilo </div>
                         </button>
                     </div>
                     <div class="close-icon-container">
-                        <button @click="closeModal" class="close-icon-button">
+                        <button @click="show.selectorModal = false" class="close-icon-button">
                             <img src="@/assets/icons/close-icon-large.svg" draggable="false">
                         </button>
                     </div>
                 </div>
                 <div class="collection-list">
-                    <CharacterCard v-model:styleToRename="styleToRename" v-model:renameVisible="renameVisible" v-for="style in styles" :style="style"/>
+                    <CharacterCard v-for="style in styles.styles" :style="style"/>
                 </div>
             </div>
         </div>
-        <ImportModal v-if="importVisible" v-model:importVisible="importVisible"/>
-        <RenameModal v-if="renameVisible" :id="styleToRename" v-model:renameVisible="renameVisible"/>
     </div>
 </template>
 

@@ -1,15 +1,21 @@
 <script lang="ts" setup>
-import { styleStorage } from '@/assets/utils/styleStorage';
+import { useStylesStore } from '@/assets/stores/stylesStore';
+import { useShowStore } from '@/assets/stores/showStore';
+import { useRenameStore } from '@/assets/stores/renameStore';
+
 import Modal from './Modal.vue';
 
-const props = defineProps({ renameVisible: Boolean, id: Number });
-const emit = defineEmits<{ 'update:renameVisible': [value: boolean] }>();
+const props = defineProps({ id: Number });
 
-const newName = ref('');
+const show = useShowStore();
+const styles = useStylesStore();
+const sRename = useRenameStore();
+
+const newName = ref<any>(null);
 
 function closeModal() { 
-  emit('update:renameVisible', false);
-  newName.value = '';
+  show.renameModal = false;
+  sRename.nName.value = '';
 }
 </script>
 
@@ -21,7 +27,7 @@ function closeModal() {
       <button @click="closeModal" class="base-button base-button-secondary">
         <div> Cancelar </div>
       </button>
-      <button @click="styleStorage.renameStyle(props.id, newName), closeModal()" class="base-button base-button-primary">
+      <button @click="styles.rename(sRename.renameId, newName), closeModal()" class="base-button base-button-primary">
         <div> Renomear Estilo </div>
       </button>
     </div>

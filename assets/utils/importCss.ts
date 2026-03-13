@@ -1,10 +1,12 @@
-import { styleStorage } from "./styleStorage";
-import { CSSStyle } from "./styleStorage";
+import { useStylesStore } from "../stores/stylesStore";
+import { CSSStyle } from "../stores/stylesStore";
   
 export async function importCss(file: any): Promise<void> {
   const cssContent = await readFileAsText(file);
   const newStyle = cssHandler.createStyleObject(file.name, cssContent);
-  styleStorage.addStyle(newStyle);    
+
+  const styles = useStylesStore();
+  styles.add(newStyle);    
 };
 
 const cssHandler = {

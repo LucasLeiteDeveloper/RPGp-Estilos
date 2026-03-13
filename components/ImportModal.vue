@@ -1,21 +1,26 @@
 <script lang="ts" setup>
 import { importCss } from '@/assets/utils/importCss';
+import { useShowStore } from '@/assets/stores/showStore';
+import { useStylesStore } from '@/assets/stores/stylesStore';
+
 import Modal from './Modal.vue';
 
 const props = defineProps({ importVisible: Boolean });
-const emit = defineEmits<{ 'update:importVisible': [value: boolean] }>();
+
+const styles = useStylesStore();
+const show = useShowStore();
+
+const inputFile = ref<HTMLInputElement | null>(null);
+const file = ref<any>(null);
+const canImport = ref<boolean>(false);
+
+function openFileSelect() { inputFile.value?.click(); }
 
 function closeModal() { 
-  emit('update:importVisible', false);
+  show.importModal = false;
   file.value = null;
   canImport.value = false
 }
-
-const inputFile = ref<HTMLInputElement | null>(null);
-function openFileSelect() { inputFile.value?.click(); };
-
-const file = ref<any>(null);
-const canImport = ref(false);
 
 function checkFile(event: any) {
   if (!event.target?.files[0])

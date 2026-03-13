@@ -1,5 +1,5 @@
 import { waitForElement } from '@/assets/utils/waitForElement';
-import { observeUrlChange } from '@/assets/utils/url';
+import { observeUrlChange } from '@/assets/utils/urlObserver';
 import { createPinia } from 'pinia';
 
 import App from '@/components/App.vue';
