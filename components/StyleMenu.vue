@@ -17,7 +17,7 @@ onMounted(async () => {
 <template>
     <div class="modal-background-overlay">
         <div class="modal-component style-menu-modal">
-            <div class="modal-content">
+            <div class="modal-content-ext">
                 <div class="title-row">
                     <div class="title-container">
                         <div class="modal-title style-menu-title">Meus Estilos</div>
