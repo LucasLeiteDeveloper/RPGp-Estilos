@@ -20,36 +20,9 @@ const optionsVisible = ref<boolean>(false);
 const optionsContainer = ref(null);
 
 onClickOutside(optionsContainer, () => {optionsVisible.value = false});
-
-const checkBtnState = (event: any) => {
-    const activatedBtn = document.querySelector('.character-card-selected');
-    if (activatedBtn && activatedBtn != event.target) {
-        activatedBtn.classList.remove('character-card-selected');
-        event.target.classList.add('character-card-selected');
-        return true;
-    } else if (activatedBtn && activatedBtn == event.target) {
-        activatedBtn.classList.remove('character-card-selected');
-        return false
-    } else {
-        event.target.classList.add('character-card-selected');
-        return true
-    }
-}
-
-const styleToogle = (style: String, event: any) => {
-    if (checkBtnState(event)) {
-        document.head.querySelector('style')?.remove();
-        const styleTag = document.createElement('style');
-        styleTag.textContent = style
-            .replace(/;/g, ' !important;');
-        document.head.appendChild(styleTag);
-    } else {
-        document.head.querySelector('style')?.remove();
-    }
-};
 </script>
 <template>
-    <button @click.self="styleToogle(style.css, $event)" class="character-card" style="--e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
+    <button @click.self="styles.toogle(style.id, style.css, $event)" class="style-card" :id="`style-${style.id}`" style="--e93d2354: 218px; --e1ffdca8: 26px; --33d8ef12: 14px;">
         <div class="button-container click-through">
             <button @click="optionsVisible = true" class="open-options-button">
                 <img src="@/assets/icons/three-dots-icon.svg">
@@ -85,7 +58,7 @@ const styleToogle = (style: String, event: any) => {
     justify-content: flex-end
     gap: 12px
 
-.character-card
+.style-card
     cursor: pointer
     width: 204px
     height: 204px
@@ -101,11 +74,11 @@ const styleToogle = (style: String, event: any) => {
     justify-content: space-between
     aspect-ratio: 1/1
 
-.character-card-selected
+.style-selected
     border: 1px solid rgb(182, 136, 255)
 
 @media (max-width: 1440px)
-    .character-card
+    .style-card
         width:218px
         height: 218px
 

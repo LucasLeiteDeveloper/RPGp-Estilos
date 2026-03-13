@@ -2,12 +2,16 @@
 import { useShowStore } from '@/assets/stores/showStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
 
-import CharacterCard from './CharacterCard.vue';
+import StyleCard from './StyleCard.vue';
 
 const props = defineProps({ visible: Boolean });
 
 const styles = useStylesStore();
 const show = useShowStore();
+
+onMounted(async () => {
+    styles.autoSelect();
+});
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const show = useShowStore();
                     </div>
                 </div>
                 <div class="collection-list">
-                    <CharacterCard v-for="style in styles.styles" :style="style"/>
+                    <StyleCard v-for="style in styles.styles" :style="style"/>
                 </div>
             </div>
         </div>

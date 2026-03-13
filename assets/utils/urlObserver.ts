@@ -1,4 +1,4 @@
-export function observeUrlChange(pattern: string | RegExp, callback: (url: string) => void) {
+export function observeUrlChange(pattern: string | RegExp, callbackStart: (url: string) => void, callbackFinish: () => void) {
     let lastUrl = location.href;
 
     const checkUrl = (url: string) => {
@@ -6,9 +6,9 @@ export function observeUrlChange(pattern: string | RegExp, callback: (url: strin
         ? url.includes(pattern) 
         : pattern.test(url);
       if (isMatch) {
-        callback(url);
+        callbackStart(url);
       } else {
-        document.head.querySelector('style')?.remove();
+        callbackFinish();
       }
     };
   

@@ -1,8 +1,8 @@
 {
   "name": "RPGp Estilos",
-  "description": "Personalize o estilo da sua ficha universal do seu jeito",
+  "description": "Carregue estilos personalizados para sua ficha universal",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",

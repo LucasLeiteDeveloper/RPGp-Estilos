@@ -9,23 +9,35 @@ export default defineContentScript({
   cssInjectionMode: 'manifest',
 
   async main(ctx: any) {
-    observeUrlChange('/ficha/universal/', (url) => { start(ctx); });
+    observeUrlChange('/ficha/universal/', (url) => { start(ctx, url) }, () => { finish() });
   }
 });
 
-async function start(ctx: any) {
+let ui: any;
+
+async function start(ctx: any, url: string) {
   const page = await waitForElement('.universal-sheet-page');
 
-  const ui = await createIntegratedUi(ctx, {
+  ui = await createIntegratedUi(ctx, {
     position: 'inline',
     anchor: page,
     append: 'first',
 
     onMount: (app: any) => {
-      const vueApp = createApp(App);
+      const vueApp = createApp(App, { activeUrl: url });
       vueApp.use(createPinia());
-      return vueApp.mount(app);
+      vueApp.mount(app);
+      return vueApp;
+    },
+
+    onRemove: (vueApp: any) => {
+      vueApp?.unmount();
     },
   });
   ui.mount();
+}
+
+async function finish() {
+  document.getElementById('style-ext')?.remove();
+  ui?.remove();
 }
