@@ -26,6 +26,7 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
+    document.getElementById('style-ext')?.remove();
     style?.remove();
     style = null;
 })

@@ -38,6 +38,5 @@ async function start(ctx: any, url: string) {
 }
 
 async function finish() {
-  document.getElementById('style-ext')?.remove();
   ui?.remove();
 }

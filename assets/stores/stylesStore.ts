@@ -53,7 +53,16 @@ export const useStylesStore = defineStore('styles', () => {
 
         const styleTag = document.createElement('style');
         styleTag.id = 'style-ext';
-        styleTag.textContent = style.replace(/;/g, ' !important;');
+        styleTag.textContent = style
+            .replace(
+                /(\s*@import[^;]*;)|(:root\s*\{[\s\S]*?\})|([^;{}]+;)/g,
+                (match, importRule, rootBlock, declaration) => {
+                    if (importRule || rootBlock) return match;
+                    if (declaration && !/!important/i.test(declaration))
+                        return declaration.replace(/;/, ' !important;');
+                    return match;
+                }
+            );
         document.head.appendChild(styleTag);
 
         activeStyle.value = id;
@@ -65,7 +74,16 @@ export const useStylesStore = defineStore('styles', () => {
 
         const styleTag = document.createElement('style');
         styleTag.id = 'style-ext';
-        styleTag.textContent = styles.value[activeId].css.replace(/;/g, ' !important;');
+        styleTag.textContent = styles.value[activeId].css
+            .replace(
+                /(\s*@import[^;]*;)|(:root\s*\{[\s\S]*?\})|([^;{}]+;)/g,
+                (match, importRule, rootBlock, declaration) => {
+                    if (importRule || rootBlock) return match;
+                    if (declaration && !/!important/i.test(declaration))
+                        return declaration.replace(/;/, ' !important;');
+                    return match;
+                }
+            );
         document.head.appendChild(styleTag);
     }
 
