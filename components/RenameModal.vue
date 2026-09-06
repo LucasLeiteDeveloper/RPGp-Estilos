@@ -1,20 +1,20 @@
 <script lang="ts" setup>
 import { useStylesStore } from '@/assets/stores/stylesStore';
-import { useShowStore } from '@/assets/stores/showStore';
+import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore.js';
 import { useRenameStore } from '@/assets/stores/renameStore';
 
-import Modal from './Modal.vue';
+import Modal from './Reusable/Modal.vue';
 
 const props = defineProps({ id: Number });
 
-const show = useShowStore();
+const visibleMenus = useVisibleMenusStore();
 const styles = useStylesStore();
 const sRename = useRenameStore();
 
 const newName = ref<any>(null);
 
 function closeModal() { 
-  show.renameModal = false;
+  visibleMenus.renameModal = false;
   sRename.nName.value = '';
 }
 </script>

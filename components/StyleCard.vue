@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core';
 import { useStylesStore } from '@/assets/stores/stylesStore';
-import { useShowStore } from '@/assets/stores/showStore';
+import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useRenameStore } from '@/assets/stores/renameStore';
 
 interface StyleProps {
-  id: Number;
-  nome: String;
-  css: String;
+  id: number;
+  nome: string;
+  css: string;
 }
 
 const props = defineProps<{ style: StyleProps }>();
 
-const show = useShowStore();
+const visibleMenus = useVisibleMenusStore();
 const styles = useStylesStore();
 const rename = useRenameStore();
 
@@ -31,7 +31,7 @@ onClickOutside(optionsContainer, () => {optionsVisible.value = false});
                 <button class="option-button" @click="styles.remove(props.style.id) , optionsVisible = false">
                     <span class="option-label"> Deletar </span>
                 </button>
-                <button class="option-button" @click="show.renameModal = true, rename.renameId = props.style.id">
+                <button class="option-button" @click="visibleMenus.renameModal = true, rename.renameId = props.style.id">
                     <span class="option-label"> Renomear </span>
                 </button>
             </div>

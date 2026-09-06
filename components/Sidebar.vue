@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { vMount } from '@/assets/utils/vMount';
 import { waitForElement } from '@/assets/utils/waitForElement';
-import { useShowStore } from '@/assets/stores/showStore';
+import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 
-const show = useShowStore();
+const visibleMenus = useVisibleMenusStore();
 
 const elements = ref<any>(null);
 
@@ -27,7 +27,7 @@ onMounted(async () => {
             <div v-mount="elements.headerBtns" />
         </div>
         <div class="sidebar-section">
-            <button @click="show.selectorModal = true" class="universal-button">
+            <button @click="visibleMenus.selectorModal = true" class="universal-button">
                 <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>

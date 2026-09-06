@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import { importCss } from '@/assets/utils/importCss';
-import { useShowStore } from '@/assets/stores/showStore';
-import { useStylesStore } from '@/assets/stores/stylesStore';
+import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore.js';
 
-import Modal from './Modal.vue';
+import Modal from './Reusable/Modal.vue';
 
 const props = defineProps({ importVisible: Boolean });
 
-const styles = useStylesStore();
-const show = useShowStore();
+const visibleMenus = useVisibleMenusStore();
 
 const inputFile = ref<HTMLInputElement | null>(null);
 const file = ref<any>(null);
@@ -18,10 +16,7 @@ const errorMessage = ref<any>(false);
 function openFileSelect() { inputFile.value?.click(); }
 
 function closeModal() { 
-  show.importModal = false;
-  file.value = null;
-  canImport.value = false;
-  errorMessage.value = false;
+  visibleMenus.importModal = false;
 }
 
 function checkFile(event: any) {
@@ -32,13 +27,13 @@ function checkFile(event: any) {
 }
 
 async function clickImportCss(file: any) {
-  let importCssReturn = await importCss(file);
-  console.log('retorno:', importCssReturn, typeof importCssReturn);
+  const importCssReturn = await importCss(file);
+
   if (importCssReturn !== true) {
     errorMessage.value = importCssReturn;
-    console.log('erro setado:', errorMessage.value);
     return;
   }
+  
   closeModal();
 }
 </script>
@@ -89,9 +84,9 @@ async function clickImportCss(file: any) {
 }
 
 .buttons-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
 }
 </style>

@@ -2,9 +2,7 @@ export function waitForElement(selector: string): Promise<HTMLElement> {
     return new Promise((resolve) => {
       // Se o elemento já existe, resolve na hora
       const element = document.querySelector(selector);
-      if (element) {
-        return resolve(element as HTMLElement);
-      }
+      if(element) return resolve(element as HTMLElement);
       
       // Caso contrário, observa mudanças no corpo da página
       const observer = new MutationObserver(() => {

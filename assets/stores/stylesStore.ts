@@ -1,9 +1,25 @@
 import { defineStore } from "pinia"
+import { containsURLinCSS } from "../utils/containsURLinCSS";
 
 export interface CSSStyle {
     id: number;
     nome: string;
     css: string;
+}
+
+// Adiciona !important para todas as linhas do CSS, exceto nos @import e :root
+function formatCSS(style: string): string {
+    const formatedCSS = style
+        .replace(
+            /(\s*@import[^;]*;)|(:root\s*\{[\s\S]*?\})|([^;{}]+;)/g,
+            (match, importRule, rootBlock, declaration) => {
+                if (importRule || rootBlock) return match;
+                if (declaration && !/!important/i.test(declaration))
+                    return declaration.replace(/;/, ' !important;');
+                return match;
+            }
+        );
+    return formatedCSS
 }
 
 export const useStylesStore = defineStore('styles', () => {
@@ -18,7 +34,6 @@ export const useStylesStore = defineStore('styles', () => {
         localStorage.setItem('ActiveStyle', JSON.stringify(id));
     });
 
-    // CRUD
     function add(nStyle: CSSStyle) {
         nStyle.id = (styles.value.at(-1)?.id ?? 0) + 1;
         styles.value.push(nStyle);
@@ -40,51 +55,33 @@ export const useStylesStore = defineStore('styles', () => {
         styles.value[indexToRename].nome = newName;
     }
 
-    function toogle(id: any, style: String, event: any) {
-        document.head.querySelector('#style-ext')?.remove();
-        const active = document.querySelector('.style-selected');
-        active?.classList.remove('style-selected');
+    function toogle(id: any, style: string, event?: any) {
+        if(containsURLinCSS(style)) return;
 
-        activeStyle.value = null;
-        
-        if (active === event.target) return;
-        
-        event.target.classList.add('style-selected');
+        if(event) {
+            document.head.querySelector('#style-ext')?.remove();
+            const active = document.querySelector('.style-selected');
+            active?.classList.remove('style-selected');
+
+            activeStyle.value = null;
+            
+            if (active === event.target) return;
+            event.target.classList.add('style-selected');
+        }
 
         const styleTag = document.createElement('style');
         styleTag.id = 'style-ext';
-        styleTag.textContent = style
-            .replace(
-                /(\s*@import[^;]*;)|(:root\s*\{[\s\S]*?\})|([^;{}]+;)/g,
-                (match, importRule, rootBlock, declaration) => {
-                    if (importRule || rootBlock) return match;
-                    if (declaration && !/!important/i.test(declaration))
-                        return declaration.replace(/;/, ' !important;');
-                    return match;
-                }
-            );
-        document.head.appendChild(styleTag);
 
+        styleTag.textContent = formatCSS(style);
+
+        document.head.appendChild(styleTag);
         activeStyle.value = id;
     };
 
     function autoToogle() {
         if (!activeStyle.value) return;
         const activeId = styles.value.findIndex(style => style.id === activeStyle.value);
-
-        const styleTag = document.createElement('style');
-        styleTag.id = 'style-ext';
-        styleTag.textContent = styles.value[activeId].css
-            .replace(
-                /(\s*@import[^;]*;)|(:root\s*\{[\s\S]*?\})|([^;{}]+;)/g,
-                (match, importRule, rootBlock, declaration) => {
-                    if (importRule || rootBlock) return match;
-                    if (declaration && !/!important/i.test(declaration))
-                        return declaration.replace(/;/, ' !important;');
-                    return match;
-                }
-            );
-        document.head.appendChild(styleTag);
+        toogle(styles.value[activeId].id, styles.value[activeId].css)
     }
 
     function autoSelect() {

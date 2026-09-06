@@ -4,37 +4,37 @@ import StyleMenu from './StyleMenu.vue';
 import RenameModal from './RenameModal.vue';
 import ImportModal from './ImportModal.vue';
 
-import { useShowStore } from '@/assets/stores/showStore';
+import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
 
 const props = defineProps<{ activeUrl: string }>();
 
 const styles = useStylesStore();
-const show = useShowStore();
+const visibleMenus = useVisibleMenusStore();
 
-let style: any = null;
+let defaultExtensionStyle: any = null;
 
 onMounted(async () => {
-    const mod = await import('@/assets/styles/siteMod.sass?inline');
-    const dependecies = await import('@/assets/styles/siteDependecies.sass?inline');
+    const stylesModification = await import('@/assets/styles/siteMod.sass?inline');
+    const stylesDependecies = await import('@/assets/styles/siteDependecies.sass?inline');
 
-    style = document.createElement('style');
-    style.textContent = mod.default + dependecies.default;
-    document.head.appendChild(style);
+    defaultExtensionStyle = document.createElement('style');
+    defaultExtensionStyle.textContent = stylesModification.default + stylesDependecies.default;
+    document.head.appendChild(defaultExtensionStyle);
 
     styles.autoToogle();
 });
 
 onBeforeUnmount(() => {
     document.getElementById('style-ext')?.remove();
-    style?.remove();
-    style = null;
+    defaultExtensionStyle?.remove();
+    defaultExtensionStyle = null;
 })
 </script>
 
 <template>
     <Sidebar/>
-    <StyleMenu v-if="show.selectorModal"/>
-    <ImportModal v-if="show.importModal"/>
-    <RenameModal v-if="show.renameModal"/>
+    <StyleMenu v-if="visibleMenus.selectorModal"/>
+    <ImportModal v-if="visibleMenus.importModal"/>
+    <RenameModal v-if="visibleMenus.renameModal"/>
 </template>
