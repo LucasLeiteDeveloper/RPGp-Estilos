@@ -1,26 +1,34 @@
 import { useStylesStore } from "../stores/stylesStore";
 import { CSSStyle } from "../stores/stylesStore";
   
-export async function importCss(file: any): Promise<void> {
+export async function importCss(file: any): Promise<any> {
   const cssContent = await readFileAsText(file);
-  const newStyle = cssHandler.createStyleObject(file.name, cssContent);
 
+  if (containsImageReference(cssContent)) {
+    return "Os estilos não podem conter imagens ou fontes externas";
+  }
+
+  const newStyle = createCssObject(file.name, cssContent);
   const styles = useStylesStore();
-  styles.add(newStyle);    
-};
+  styles.add(newStyle);
+  return true;
+}
 
-const cssHandler = {
-  createStyleObject(fileName: string, cssContent: string): CSSStyle {
-    return {
-      id: 0,
-      nome: this.extractFileName(fileName),
-      css: cssContent
-    };
-  },
-  
-  extractFileName(fileName: string): string {
-    return fileName.replace('.css', '');
-  },
+function containsImageReference(css: string): boolean {
+  const withoutComments = css.replace(/\/\*[\s\S]*?\*\//g, "");
+
+  const urlPattern = /url\(\s*['"]?[^'")]+['"]?\s*\)/i;
+  const imageSetPattern = /image-set\(/i;
+
+  return urlPattern.test(withoutComments) || imageSetPattern.test(withoutComments);
+}
+
+function createCssObject(fileName: string, cssContent: string): CSSStyle {
+  return {
+    id: 0,
+    nome: fileName.replace('.css', ''),
+    css: cssContent
+  };
 };
   
 function readFileAsText(file: File): Promise<string> {

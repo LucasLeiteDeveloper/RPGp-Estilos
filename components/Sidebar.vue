@@ -9,7 +9,7 @@ const elements = ref<any>(null);
 
 onMounted(async () => {
     elements.value = {
-        backBtn: await waitForElement('.back-button[data-v-8b81d767]'),
+        backBtn: await waitForElement('#app > div > button'),
         headerBtns: await waitForElement('.header-buttons-container'),
         changeSheetBtn: await waitForElement('.change-sheet-mode-button'),
     };

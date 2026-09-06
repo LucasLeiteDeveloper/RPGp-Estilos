@@ -13,13 +13,15 @@ const show = useShowStore();
 const inputFile = ref<HTMLInputElement | null>(null);
 const file = ref<any>(null);
 const canImport = ref<boolean>(false);
+const errorMessage = ref<any>(false);
 
 function openFileSelect() { inputFile.value?.click(); }
 
 function closeModal() { 
   show.importModal = false;
   file.value = null;
-  canImport.value = false
+  canImport.value = false;
+  errorMessage.value = false;
 }
 
 function checkFile(event: any) {
@@ -27,6 +29,17 @@ function checkFile(event: any) {
     return canImport.value = false;
   file.value = event.target?.files[0];
   canImport.value = true;
+}
+
+async function clickImportCss(file: any) {
+  let importCssReturn = await importCss(file);
+  console.log('retorno:', importCssReturn, typeof importCssReturn);
+  if (importCssReturn !== true) {
+    errorMessage.value = importCssReturn;
+    console.log('erro setado:', errorMessage.value);
+    return;
+  }
+  closeModal();
 }
 </script>
 
@@ -41,11 +54,12 @@ function checkFile(event: any) {
       <img src="" alt="" class="file-img">
       <label class="file-label"> {{ file?.name ?? 'Selecionar arquivo' }} </label>
     </button>
+    <label v-if="errorMessage">{{ errorMessage }}</label>
     <div class="buttons-container">
       <button @click="closeModal" class="base-button base-button-secondary">
         <div> Cancelar </div>
       </button>
-      <button @click="importCss(file), closeModal()" class="base-button" :disabled="!canImport" :class="{ 'base-button-disabled': !canImport, 'base-button-primary': canImport }">
+      <button @click="clickImportCss(file)" class="base-button" :disabled="!canImport" :class="{ 'base-button-disabled': !canImport, 'base-button-primary': canImport }">
         <div> Importar Estilo </div>
       </button>
     </div>
