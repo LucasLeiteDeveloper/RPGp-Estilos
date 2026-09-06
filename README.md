@@ -5,10 +5,10 @@ Carregue estilos personalizados para sua ficha universal na RPGpedia.
 
 ## Como eu instalo a extensão?
 ### Navegadores baseados em Chrome
-- Baixe a [versão mais recente do projeto]()
-- Vá para a página de extensões do seu navegador - ou acesse `chrome://extensions`
-- Ative o **modo desenvolvedor** nas página de extensões
-- Arraste o arquivo da extensão para dentro da janela do Chrome
+1. Baixe a [versão mais recente do projeto]()
+2. Vá para a página de extensões do seu navegador - ou acesse `chrome://extensions`
+3. Ative o **modo desenvolvedor** nas página de extensões
+4. Arraste o arquivo da extensão para dentro da janela do Chrome
 
 ### Navegadores baseados em Firefox ou Edge
 A extensão ainda não tem suporte para esses navegadores.
