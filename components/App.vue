@@ -3,6 +3,7 @@ import Sidebar from './Sidebar.vue';
 import StyleMenu from './StyleMenu.vue';
 import RenameModal from './RenameModal.vue';
 import ImportModal from './ImportModal.vue';
+import EditModal from './EditModal.vue';
 
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
@@ -37,4 +38,5 @@ onBeforeUnmount(() => {
     <StyleMenu v-if="visibleMenus.selectorModal"/>
     <ImportModal v-if="visibleMenus.importModal"/>
     <RenameModal v-if="visibleMenus.renameModal"/>
+    <EditModal v-if="visibleMenus.editModal"/>
 </template>

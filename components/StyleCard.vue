@@ -3,6 +3,7 @@ import { onClickOutside } from '@vueuse/core';
 import { useStylesStore } from '@/assets/stores/stylesStore';
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useRenameStore } from '@/assets/stores/renameStore';
+import { useEditStore } from '@/assets/stores/editStore';
 
 interface StyleProps {
   id: number;
@@ -15,6 +16,7 @@ const props = defineProps<{ style: StyleProps }>();
 const visibleMenus = useVisibleMenusStore();
 const styles = useStylesStore();
 const rename = useRenameStore();
+const edit= useEditStore();
 
 const optionsVisible = ref<boolean>(false);
 const optionsContainer = ref(null);
@@ -32,6 +34,9 @@ onClickOutside(optionsContainer, () => {optionsVisible.value = false});
                     <span class="option-label"> Deletar </span>
                 </button>
                 <button class="option-button" @click="visibleMenus.renameModal = true, rename.renameId = props.style.id">
+                    <span class="option-label"> Renomear </span>
+                </button>
+                <button class="option-button" @click="visibleMenus.editModal = true, edit.editId = props.style.id">
                     <span class="option-label"> Renomear </span>
                 </button>
             </div>
