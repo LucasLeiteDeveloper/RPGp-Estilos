@@ -4,8 +4,6 @@ import { useStylesStore } from '@/assets/stores/stylesStore';
 
 import StyleCard from './StyleCard.vue';
 
-const props = defineProps({ visible: Boolean });
-
 const styles = useStylesStore();
 const visibleMenus = useVisibleMenusStore();
 

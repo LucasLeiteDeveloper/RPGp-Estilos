@@ -58,13 +58,14 @@ export const useStylesStore = defineStore('styles', () => {
     function toogle(id: any, style: string, event?: any) {
         if(containsURLinCSS(style)) return;
 
+        // Se essa função for ativada por um input do usuário
         if(event) {
             document.head.querySelector('#style-ext')?.remove();
             const active = document.querySelector('.style-selected');
             active?.classList.remove('style-selected');
 
             activeStyle.value = null;
-            
+
             if (active === event.target) return;
             event.target.classList.add('style-selected');
         }

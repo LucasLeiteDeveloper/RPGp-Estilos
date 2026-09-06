@@ -15,7 +15,6 @@ const newName = ref<any>(null);
 
 function closeModal() { 
   visibleMenus.renameModal = false;
-  sRename.nName.value = '';
 }
 </script>
 

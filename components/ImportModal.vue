@@ -4,8 +4,6 @@ import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore.js';
 
 import Modal from './Reusable/Modal.vue';
 
-const props = defineProps({ importVisible: Boolean });
-
 const visibleMenus = useVisibleMenusStore();
 
 const inputFile = ref<HTMLInputElement | null>(null);
