@@ -32,7 +32,31 @@ Atualmente não há uma grande variedade de estilos feitos pela comunidade, mas 
 Para criar seu próprio estilo você vai precisar ter conhecimentos básicos sobre CSS e das ferramentas de desenvolvedor do seu navegador. Utilizando as ferramentas de desenvolvedor você pode ver as classes de um elemento da ficha e o estilo dele. Com essas informações você pode usar o nome da classe em um arquivo .css e fazer as alterações que desejar naquele elemento.
 
 > [!WARNING]
-> Devido as regras **Regras de Divulgação de Extensões** os estilos que você for criar para a extensão não podem alterar quaisquer customizações comerciáveis da plataforma, como fundo das fichas, bandeja de dados, ou moldura de perfil. Resumindo, **não é possível utilizar imagens** ou **não é possivel importar fontes de texto**.
+> Devido as regras **Regras de Divulgação de Extensões** disponiveis no [servidor do Discord da RPGpedia](), as extensões não podem alterar quaisquer customizações comerciáveis da plataforma, como fundo das fichas, bandeja de dados, ou moldura de perfil. Para seguir essas diretrizes os estilos **não podem conter imagens, fontes ou qualquer forma de importação de conteúdo**.
+
+## Roadmap de Atualizações
+
+Algumas funcionalidades que podem vir futuramente.
+
+### Estilo fixos para cada ficha
+
+Atualmente o estilo que estiver selecionado é aplicado em todas as fichas universais. Mas isso será alterado para que cada ficha lembre qual estilo está sendo usado nela, assim os usuários podem usar estilos que são feitos para uma ficha especifica sem que isso afete as outras fichas.
+
+### Imagens como capa de estilo
+
+Opção para selecionar uma imagem como capa para seu estilo - similar a como funciona a foto na ficha universal - facilitando a distinção entre os estilos.
+
+### Estilos de componente único
+
+Um estilo que altera apenas um componente da ficha, permitindo que o usuário use vários estilos menores simultaneamente.
+
+### Facilitar a criação de estilos
+
+Uma interface para editar componentes da ficha sem a necessidade de mexer diretamente com CSS, não espere isso para nenhum momento próximo.
+
+### Qualidade de Vida
+
+Funcionalidades menores que melhorem a experiência do usuário como: confirmação dupla para deletar estilos, seleção de multiplos estilos para excluir em grupo, mostrar as classes dos componentes da ficha universal no Inventário de Seções, entre outros.
 
 ## Erros Conhecidos
 
@@ -41,4 +65,4 @@ Para criar seu próprio estilo você vai precisar ter conhecimentos básicos sob
 Alguns estilos que modificam classes que são usadas tanto na ficha universal quanto interface da extensão acabam alterando a aparência da interface, podendo gerar erros visuais e até impedir o funcionamento correto da extensão (escondendo botões cruciais por exemplo).
 
 ## Tecnologias Utilizadas
-Para criar essa extensão foi utilizado o framework WXT + Vue.
+Essa extensão utiliza o framework WXT + Vue.
