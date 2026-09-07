@@ -1,0 +1,224 @@
+/* Gerais */
+.sheet-section-title { text-align: center; }
+
+.utils-container { display: none; }
+
+/* Perfil */
+.universal-sheet-profile {
+    flex-flow: row;
+
+    .profile-picture {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 110px;
+        height: 110px;
+        position: relative;
+
+        .profile-picture-frame {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 110px;
+            height: 110px;
+            z-index: 1;
+        }
+
+        .profile-picture-img {
+            position: initial;
+
+            img {
+                width: 73px;
+                height: 73px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .character-name {
+        font-size: 20px;
+        font-family: "Lovera";
+    }
+}
+
+/* Pericias */
+.skills-list {
+    gap: 6px;
+    padding: 12px 0;
+    border-radius: 12px;
+    border: 1px solid #ffffff33;
+    background: #2e313a66;
+
+    .basic-skill-card {
+        min-height: 0;
+        padding: 4px 12px;
+        border: none;
+        background: none;
+    }
+
+    .skill-card-container {
+        .skill-info-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            * {
+                width: fit-content;
+            }
+
+            .base-label {
+                color: #fff;
+            }
+        }
+    }
+
+    .skill-values-container {
+        .base-value {
+            color: #fff;
+        }
+    }
+}
+
+.skill-label {
+    color: #ffffff99;
+    font-weight: bold;
+}
+
+/* Atributos Horizontals */
+.stats-container[data-v-f3229bb9] {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .stat-row {
+        flex: 1;
+        display: flex;
+        min-width: 60px;
+        align-items: center;
+        gap: 6px;
+
+        .stat-card {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            gap: 2px;
+            border-radius: 0;
+            border: none;
+            background: none;
+
+            * {
+                text-align: center;
+            }
+
+            .stat-label {
+                overflow-x: clip;
+                text-overflow: ellipsis;
+                min-height: 0;
+            }
+
+            .stat-value {
+                width: 100%;
+                padding: 8px 16px;
+                border-radius: 6px;
+                border: 1px solid rgba(255, 255, 255, .2);
+                background: rgba(46, 49, 58, .4);
+            }
+        }
+    }
+}
+
+/* Fracionaveis */
+.simple-fraction-bar {
+    .fraction-bar-label {
+        text-align: center;
+    }
+
+    .fraction-bar-background {
+        height: 38px;
+
+        .fraction-bar-visual-value {
+            height: 100%;
+        }
+
+        .fraction-bar-content {
+            height: 100%;
+        }
+    }
+}
+
+/* Rolagens */
+.classic-roll-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    grid-template-rows: 54px;
+    grid-template-areas:
+      "dice roll";
+    gap: 12px;
+
+    .rolls-container {
+        display: flex;
+
+        .roll-option-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: fit-content;
+            flex: 1;
+
+            .roll-button {
+                img { transition: all 0.2s ease-out; }
+
+                img:hover {
+                    transform: rotate(5deg);
+                    scale: 1.1;
+                }
+            }
+        }
+
+        .undo  { display: none; }
+    }
+
+    .roll-bonus-container { display: none; }
+
+    .roll-button-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+        grid-area: roll;
+
+        .trash-button { display: none; }
+    }
+}
+
+.preset-select-container,
+.settings-container,
+.section-footer-container {
+    display: none;
+}
+
+/* Macros */
+.macro-card {
+    align-items: center;
+
+    .info:not(:has(> .grouped-list)) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .notation {
+        font-size: 12px;
+        color: #aeadc3;
+        
+        * {
+            font-size: 12px;
+            color: #aeadc3;
+        }
+    }
+}
