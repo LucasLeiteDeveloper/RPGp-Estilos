@@ -37,7 +37,7 @@ onClickOutside(optionsContainer, () => {optionsVisible.value = false});
                     <span class="option-label"> Renomear </span>
                 </button>
                 <button class="option-button" @click="visibleMenus.editModal = true, edit.editId = props.style.id">
-                    <span class="option-label"> Renomear </span>
+                    <span class="option-label"> Editar </span>
                 </button>
             </div>
         </div>

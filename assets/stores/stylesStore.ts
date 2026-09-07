@@ -45,10 +45,7 @@ export const useStylesStore = defineStore('styles', () => {
         styles.value[indexToUpdate] = styleToUpdate;
         if(styles.value[activeId].id == styleToUpdate.id) {
             document.head.querySelector("#style-ext")?.remove();
-            const styleTag = document.createElement('style');
-            styleTag.id = 'style-ext';
-            styleTag.textContent = formatCSS(styleToUpdate.css);
-            document.head.appendChild(styleTag);
+            toogle(styleToUpdate.id, styleToUpdate.css);
         }
     }
 
