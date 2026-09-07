@@ -2,8 +2,10 @@
 import { vMount } from '@/assets/utils/vMount';
 import { waitForElement } from '@/assets/utils/waitForElement';
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
+import { useStylesStore } from '@/assets/stores/stylesStore';
 
 const visibleMenus = useVisibleMenusStore();
+const styles = useStylesStore();
 
 const elements = ref<any>(null);
 
@@ -15,8 +17,31 @@ onMounted(async () => {
     };
 
     elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
-        if (node.nodeType === Node.TEXT_NODE) node.remove();
+        if (node.nodeType === Node.TEXT_NODE) {
+            if(node.textContent?.trim() === "Modo de Jogo")
+                elements.value.changeSheetBtn.click();
+            node.remove();
+        }
     });
+
+
+    // Desativa o estilo do usuário ao entrar no modo de edição
+    let editMode = false;
+
+    function alternateEditMode() {
+        if(editMode == true) {
+            styles.autoToogle();
+            editMode = false;
+            return;
+        }
+
+        document.head.querySelector('#style-ext')?.remove();
+        editMode = true;
+    }
+
+    elements.value.changeSheetBtn.addEventListener("click", function() {
+        alternateEditMode();
+    })
 });
 </script>
 
