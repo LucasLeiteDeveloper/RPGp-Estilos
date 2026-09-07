@@ -21,6 +21,8 @@ Você precisa de um arquivo .css com o estilo que você quer utilizar. Com esse 
 
 ### Onde posso encontrar novos estilos?
 
+Você pode usar esse [estilo de exemplo](https://github.com/LucasLeiteDeveloper/RPGp-Estilos/blob/master/extensionstyles/rpgpmenor.css) para testar a extensão.
+
 Atualmente não há uma grande variedade de estilos feitos pela comunidade, mas caso queira achar algum você pode tentar procurar no [servidor do Discord da RPGpedia](https://discord.gg/fa6W4n9jMY)
 
 ## Como eu crio meu próprio estilo?
