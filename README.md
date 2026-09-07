@@ -46,10 +46,6 @@ Atualmente o estilo que estiver selecionado é aplicado em todas as fichas unive
 
 Opção para selecionar uma imagem como capa para seu estilo - similar a como funciona a foto na ficha universal - facilitando a distinção entre os estilos.
 
-### Estilos de componente único
-
-Um estilo que altera apenas um componente da ficha, permitindo que o usuário use vários estilos menores simultaneamente.
-
 ### Facilitar a criação de estilos
 
 Uma interface para editar componentes da ficha sem a necessidade de mexer diretamente com CSS, não espere isso para nenhum momento próximo.
