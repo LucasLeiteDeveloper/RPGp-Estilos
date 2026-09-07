@@ -8,7 +8,7 @@ Carregue estilos personalizados para sua ficha universal na [RPGpedia](https://r
 
 ### Navegadores baseados em Chrome
 
-1. Baixe a [versão mais recente do projeto]()
+1. Baixe a [versão mais recente do projeto](https://github.com/LucasLeiteDeveloper/RPGp-Estilos/releases/download/v1.1.0-b/rpgp-estilos-1.1.0-b.zip)
 2. Vá para a página de extensões do seu navegador ou acesse `chrome://extensions`
 3. Ative o **modo desenvolvedor** na página de extensões
 4. Arraste o arquivo da extensão para dentro da janela do Chrome
@@ -22,8 +22,6 @@ A extensão ainda não tem suporte para esses navegadores.
 Você precisa de um arquivo .css com o estilo que você quer utilizar. Com esse arquivo em mãos, é só entrar na sua ficha universal, clicar no pincel da barra lateral, clicar no botão de importar estilo e selecionar seu arquivo.
 
 ### Onde posso encontrar novos estilos?
-
-Você pode baixar esse [estilo de exemplo]() para testar a extensão.
 
 Atualmente não há uma grande variedade de estilos feitos pela comunidade, mas caso queira achar algum você pode tentar procurar no [servidor do Discord da RPGpedia](https://discord.gg/fa6W4n9jMY)
 
