@@ -1,5 +1,3 @@
-__README incompleto__
-
 # RPGp Estilos
 
 Carregue estilos personalizados para sua ficha universal na [RPGpedia](https://rpgpedia.com).
