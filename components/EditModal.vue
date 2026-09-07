@@ -9,9 +9,19 @@ const visibleMenus = useVisibleMenusStore();
 const styles = useStylesStore();
 const edit = useEditStore();
 
+const contentEdit = ref(getStyleContentById(edit.editId))
+
 function getStyleContentById(styleId: any): string {
   const style = styles.styles.find(style => style.id === styleId);
   return style?.css ?? '';
+}
+
+function updateStyleContentById(styleId: any, content: string): string | void {
+  const style = styles.styles.find(style => style.id === styleId);
+  if(!style) return;
+  style.css = content;
+  styles.update(style);
+  closeModal();
 }
 
 function closeModal() {
@@ -22,13 +32,13 @@ function closeModal() {
 <template>
   <Modal>
     <div class="modal-title"> Editar Estilo </div>
-    <textarea spellcheck="false" :value="getStyleContentById(edit.editId)"></textarea>
+    <textarea spellcheck="false" v-model="contentEdit"></textarea>
     <!-- <label v-if="errorMessage">{{ errorMessage }}</label> -->
     <div class="buttons-container">
       <button @click="closeModal" class="base-button base-button-secondary">
         <div> Cancelar </div>
       </button>
-      <button @click="closeModal" class="base-button base-button-primary">
+      <button @click="updateStyleContentById(edit.editId, contentEdit)" class="base-button base-button-primary">
         <div> Finalizar Edição </div>
       </button>
     </div>

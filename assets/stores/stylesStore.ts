@@ -39,6 +39,19 @@ export const useStylesStore = defineStore('styles', () => {
         styles.value.push(nStyle);
     }
 
+    function update(styleToUpdate: CSSStyle) {
+        const indexToUpdate = styles.value.findIndex(style => style.id === styleToUpdate.id);
+        const activeId = styles.value.findIndex(style => style.id === activeStyle.value);
+        styles.value[indexToUpdate] = styleToUpdate;
+        if(styles.value[activeId].id == styleToUpdate.id) {
+            document.head.querySelector("#style-ext")?.remove();
+            const styleTag = document.createElement('style');
+            styleTag.id = 'style-ext';
+            styleTag.textContent = formatCSS(styleToUpdate.css);
+            document.head.appendChild(styleTag);
+        }
+    }
+
     function remove(id: any) {
         styles.value = styles.value.filter(item => item.id !== id);
 
@@ -91,5 +104,5 @@ export const useStylesStore = defineStore('styles', () => {
         activeElement?.classList.add('style-selected');
     }
 
-    return { styles, activeStyle, add, remove, rename, toogle, autoToogle, autoSelect }
+    return { styles, activeStyle, add, update, remove, rename, toogle, autoToogle, autoSelect }
 })
