@@ -11,9 +11,9 @@ const elements = ref<any>(null);
 
 onMounted(async () => {
     elements.value = {
-        backBtn: await waitForElement('#app > div > button'),
+        backBtn: await waitForElement('.header-navigation > .back-button'),
         headerBtns: await waitForElement('.header-buttons-container'),
-        changeSheetBtn: await waitForElement('.change-sheet-mode-button'),
+        changeSheetBtn: await waitForElement('.edit-sheet-button'),
     };
 
     elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
@@ -23,7 +23,6 @@ onMounted(async () => {
             node.remove();
         }
     });
-
 
     // Desativa o estilo do usuário ao entrar no modo de edição
     let editMode = false;
@@ -47,11 +46,10 @@ onMounted(async () => {
 
 <template>
     <div class="sidebar">
-        <div v-mount="elements.backBtn" />
+        <div v-mount="elements.backBtn"/>
+        <div style="height: 1px; width: 100%; background-color: rgba(255, 255, 255, .2); border-radius: 5px;"></div>
         <div class="sidebar-section">
             <div v-mount="elements.headerBtns" />
-        </div>
-        <div class="sidebar-section">
             <button @click="visibleMenus.selectorModal = true" class="universal-button">
                 <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
@@ -70,13 +68,8 @@ onMounted(async () => {
     z-index: 10
     
 .sidebar-section
+    display: flex
+    flex-flow: column
     width: fit-content
-    padding: 5px
-    border-radius: 12px
-    border: 1px solid rgba(242, 242, 242, .2)
-    background: rgba(16, 18, 24, .4)
-    box-shadow: 5px 10px 24px #00000040
-    -webkit-backdrop-filter: blur(100px)
-    backdrop-filter: blur(100px)
-    filter: none
+    gap: 6px
 </style>
