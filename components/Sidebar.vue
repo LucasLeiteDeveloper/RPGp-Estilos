@@ -13,34 +13,38 @@ onMounted(async () => {
     elements.value = {
         backBtn: await waitForElement('.header-navigation > .back-button'),
         headerBtns: await waitForElement('.header-buttons-container'),
+        copyBtn: await waitForElement('.add-to-collection-button'),
         changeSheetBtn: await waitForElement('.edit-sheet-button'),
     };
 
-    elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-            if(node.textContent?.trim() === "Modo de Jogo")
-                elements.value.changeSheetBtn.click();
-            node.remove();
-        }
-    });
+    const copyBtnSpan = elements.value.copyBtn.querySelector('span');
+    elements.value.copyBtn.removeChild(copyBtnSpan);
+
+    // elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
+    //     if (node.nodeType === Node.TEXT_NODE) {
+    //         if(node.textContent?.trim() === "Modo de Jogo")
+    //             elements.value.changeSheetBtn.click();
+    //         node.remove();
+    //     }
+    // });
 
     // Desativa o estilo do usuário ao entrar no modo de edição
-    let editMode = false;
+    // let editMode = false;
 
-    function alternateEditMode() {
-        if(editMode == true) {
-            styles.autoToogle();
-            editMode = false;
-            return;
-        }
+    // function alternateEditMode() {
+    //     if(editMode == true) {
+    //         styles.autoToogle();
+    //         editMode = false;
+    //         return;
+    //     }
 
-        document.head.querySelector('#style-ext')?.remove();
-        editMode = true;
-    }
+    //     document.head.querySelector('#style-ext')?.remove();
+    //     editMode = true;
+    // }
 
-    elements.value.changeSheetBtn.addEventListener("click", function() {
-        alternateEditMode();
-    })
+    // elements.value.changeSheetBtn.addEventListener("click", function() {
+    //     alternateEditMode();
+    // })
 });
 </script>
 
@@ -54,6 +58,8 @@ onMounted(async () => {
                 <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>
+        <div style="height: 1px; width: 100%; background-color: rgba(255, 255, 255, .2); border-radius: 5px;"></div>
+        <div v-mount="elements.copyBtn"></div>
     </div>
 </template>
 
