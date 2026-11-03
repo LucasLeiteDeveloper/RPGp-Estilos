@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { vMount } from '@/assets/utils/vMount';
-import { waitForElement } from '@/assets/utils/waitForElement';
+import { waitForElement, waitForOptionalElement } from '@/assets/utils/waitForElement';
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
 
@@ -10,15 +10,20 @@ const styles = useStylesStore();
 const elements = ref<any>(null);
 
 onMounted(async () => {
-    elements.value = {
-        backBtn: await waitForElement('.header-navigation > .back-button'),
-        headerBtns: await waitForElement('.header-buttons-container'),
-        copyBtn: await waitForElement('.add-to-collection-button'),
-        changeSheetBtn: await waitForElement('.edit-sheet-button'),
-    };
+    const [backBtn, headerBtns, changeSheetBtn] = await Promise.all([
+        waitForElement('.header-navigation > .back-button'),
+        waitForElement('.header-buttons-container'),
+        waitForElement('.edit-sheet-button'),
+    ]);
 
-    const copyBtnSpan = elements.value.copyBtn.querySelector('span');
-    elements.value.copyBtn.removeChild(copyBtnSpan);
+    elements.value = { backBtn, headerBtns, changeSheetBtn };
+
+    waitForElement('.add-to-collection-button').then((btn) => {
+        elements.value.copyBtn = btn;
+        const copyBtnSpan = elements.value.copyBtn.querySelector('span');
+        elements.value.copyBtn.removeChild(copyBtnSpan);
+    });
+
 
     // elements.value.changeSheetBtn.childNodes.forEach((node: any) => {
     //     if (node.nodeType === Node.TEXT_NODE) {
@@ -58,8 +63,8 @@ onMounted(async () => {
                 <img src="@/assets/icons/pincel.svg" draggable="false">
             </button>
         </div>
-        <div style="height: 1px; width: 100%; background-color: rgba(255, 255, 255, .2); border-radius: 5px;"></div>
-        <div v-mount="elements.copyBtn"></div>
+        <div v-if="elements.copyBtn" style="height: 1px; width: 100%; background-color: rgba(255, 255, 255, .2); border-radius: 5px;"></div>
+        <div v-if="elements.copyBtn" v-mount="elements.copyBtn"></div>
     </div>
 </template>
 
