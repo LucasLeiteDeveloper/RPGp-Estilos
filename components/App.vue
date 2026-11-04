@@ -7,6 +7,8 @@ import EditModal from './EditModal.vue';
 
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
+import { waitForElement } from '@/assets/utils/waitForElement.js';
+import { didStylesChange } from '@/assets/utils/checkForChangesInPurchasableItems.js';
 
 const props = defineProps<{ activeUrl: string }>();
 

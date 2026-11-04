@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { vMount } from '@/assets/utils/vMount';
-import { waitForElement, waitForOptionalElement } from '@/assets/utils/waitForElement';
+import { waitForElement } from '@/assets/utils/waitForElement';
 import { useVisibleMenusStore } from '@/assets/stores/visibleMenusStore';
 import { useStylesStore } from '@/assets/stores/stylesStore';
 

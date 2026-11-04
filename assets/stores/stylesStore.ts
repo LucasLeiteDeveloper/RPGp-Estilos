@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import { containsURLinCSS } from "../utils/containsURLinCSS";
+import { didStylesChange } from "../utils/checkForChangesInPurchasableItems";
 
 export interface CSSStyle {
     id: number;
@@ -85,7 +86,16 @@ export const useStylesStore = defineStore('styles', () => {
 
         styleTag.textContent = formatCSS(style);
 
-        document.head.appendChild(styleTag);
+        const changed = didStylesChange(
+            document.querySelectorAll(".wallpaper, .wallpaper-media .wallpaper-content"),
+            () => document.head.appendChild(styleTag)
+        );
+
+        if (changed) {
+            alert("pode não");
+            return
+        }
+        
         activeStyle.value = id;
     };
 
